@@ -6,19 +6,19 @@ function Header() {
       <nav>
         <div className="h-16 flex  justify-items-center items-center bg-gradient-to-r from-indigo-500 opacity-100">
           <div className="">
-            <a href="/main/home" className="px-6 hover:text-red-400 hover:italic">
+            <a href="/home" className="px-6 hover:text-red-400 hover:italic">
               Home
             </a>
-            <a href="/main/top" className="px-6 hover:text-red-400 hover:italic">
+            <a href="/top" className="px-6 hover:text-red-400 hover:italic">
               Top Post
             </a>
-            <a href="/main/story" className="px-6 hover:text-red-400 hover:italic">
+            <a href="/story" className="px-6 hover:text-red-400 hover:italic">
               Life Story
             </a>
-            <a href="/main/tech" className="px-6 hover:text-red-400 hover:italic">
+            <a href="/tech" className="px-6 hover:text-red-400 hover:italic">
               Tech
             </a>
-            <a href="/main/contact" className="px-6 hover:text-red-400 hover:italic">
+            <a href="/contact" className="px-6 hover:text-red-400 hover:italic">
               Contact
             </a>
           </div>
