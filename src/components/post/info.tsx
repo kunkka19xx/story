@@ -21,20 +21,20 @@ function Info() {
   }
 
   return (
-    <section className="mb-5">
+    <section className="mb-3 mt-2">
       {/* Title */}
       <div>
-        <h1 className="text-lg mb-2">{title}</h1>
+        <h1 className="text-2xl text-stone-600 mb-2">{title}</h1>
       </div>
       {/* author infor */}
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center mt-3 mb-3">
         <div className="rounded-full overflow-hidden w-12 h-12">
           <img src="/assets/avatar/avatar.jpeg" alt="" className="" />
         </div>
         <div className="ml-3">
           <div className="flex items-center">
             <span className="mr-2">{author}</span>
-            <button onClick={handleClick} className="w-26 h-8 flex items-center bg-white-500 border border-black hover:bg-blue-500 hover:font-bold text-black font-thin py-2 px-4 rounded">Follow</button>
+            <button onClick={handleClick} className="w-26 h-6 flex items-center bg-white-500 border border-black hover:bg-blue-500 hover:font-bold text-black font-thin py-2 px-4 rounded">Follow</button>
           </div>
           <div>Post information</div>
         </div>
