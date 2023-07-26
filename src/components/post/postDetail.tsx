@@ -21,8 +21,8 @@ function PostDetail() {
           <div>
             <Content></Content>
           </div>
-          <hr />
-          <div>
+          <hr className="mt-3" />
+          <div className="mt-3">
             <Comment></Comment>
           </div>
         </div>

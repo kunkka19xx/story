@@ -1,5 +1,5 @@
 import { log } from "console";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Buttonbar() {
   const [likesNumber, setLikeNumber] = useState(0);
@@ -18,6 +18,7 @@ function Buttonbar() {
 
   const scrollToComment = () => {
     console.log("Iloveyou");
+    window.scrollBy(0, 1000);
   };
 
   return (
