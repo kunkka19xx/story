@@ -1,0 +1,41 @@
+
+/* Default styles for the MiniContent component */
+.hide-on-small-screen {
+    display: block; /* Display the component by default */
+  }
+  
+  /* Media query to hide the MiniContent component on small screens (max-width: 600px) */
+  @media (max-width: 975px) {
+    .hide-on-small-screen {
+      display: none; /* Hide the component on small screens */
+    }
+    
+    #id-search-box {
+        width: auto;
+    }
+
+    #id-detail-content {
+        width: auto;
+    }
+
+    #id-comment-author{
+      display: block;
+    }
+
+    #id-comment-header{
+      width: auto;
+
+    }
+
+    #id-comment-part{
+      display: block;
+      width: auto;
+      
+    }
+    #id-posted-in {
+      justify-content: left;
+      margin-left: 20px;
+    }
+
+  }
+  

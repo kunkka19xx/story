@@ -76,11 +76,11 @@ function Comment() {
           tabIndex={-1}
           ref={index === 0 ? postedCommentFocus : null}
         >
-          <div className="flex  items-center">
-            <div className="ml-5 w-1/4">
+          <div id="id-comment-part" className="flex  items-center">
+            <div id="id-comment-header" className="ml-5 w-1/4">
               <CommentHeader></CommentHeader>
             </div>
-            <div className="w-3/4 ml-3 flex flex-row justify-end mr-5 italic text-sm">
+            <div id="id-posted-in" className="w-3/4 ml-3 flex flex-row justify-end mr-5 italic text-sm">
               Posted:
               {postedTimes[postedTimes.length - index - 1]}
             </div>

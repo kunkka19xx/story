@@ -9,8 +9,8 @@ function PostDetail() {
   return (
     <section>
       <div className="flex flex-row">
-        <div className="w-1/4 border-r border-gray-500"></div>
-        <div className="w-1/2 pl-2 pr-2">
+        <div className="w-1/4 border-r border-gray-500 hide-on-small-screen"></div>
+        <div id="id-detail-content" className="w-1/2 pl-2 pr-2">
           <div>
             <Info></Info>
           </div>
@@ -28,7 +28,7 @@ function PostDetail() {
           </div>
         </div>
         <hr className="mt-3 mb-3"></hr>
-        <div className="w-1/4 border-l border-gray-500"></div>
+        <div className="w-1/4 border-l border-gray-500 hide-on-small-screen"></div>
       </div>
       <Footer></Footer>
     </section>
