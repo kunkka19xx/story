@@ -7,8 +7,8 @@ function MiniPost() {
   return (
     <section>
       <div className="flex flex-col lg:flex-row items-center">
-        <div className="w-full lg:w-1/6 border-r border-gray-500"></div>
-        <div className="flex flex-col lg:flex-row w-full lg:w-1/2 pl-2 pr-2 pt-2 pb-2">
+        {/* <div className="w-full lg:w-1/6 border-r border-gray-500"></div> */}
+        <div className="flex flex-col lg:flex-row w-full lg:w-full pl-2 pr-2 pt-2 pb-2">
           <div className="w-full lg:w-3/4 h-auto">
             <div>
               <MiniTop />
@@ -28,15 +28,15 @@ function MiniPost() {
             />
           </div>
         </div>
-        <div className="w-full lg:w-1/3 border-l border-gray-500 hidden lg:block"></div>
+        {/* <div className="w-full lg:w-1/3 border-l border-gray-500 hidden lg:block"></div> */}
       </div>
-      <div className="flex flex-col lg:flex-row items-center">
+      {/* <div className="flex flex-col lg:flex-row items-center">
         <div className="w-full lg:w-1/6 border-r border-gray-500"></div>
-        <div className="w-full lg:w-1/2 pl-2 pr-2">
+        <div className="w-full lg:w-1/2 pl-2 pr-2"> */}
           <hr />
-        </div>
+        {/* </div>
         <div className="w-full lg:w-1/3 border-l border-gray-500 hidden lg:block"></div>
-      </div>
+      </div> */}
     </section>
   );
 }

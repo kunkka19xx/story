@@ -91,7 +91,7 @@ function Comment() {
           <div className="flex">
             <div className="border-r-2 border-y-lime-600 ml-5"></div>
             <div
-              className="text-sm text-yellow-950 ml-5 mt-1 mb-1"
+              className="text-sm text-yellow-950 ml-5 mt-1 mb-1 indent-4"
               dangerouslySetInnerHTML={{ __html: commentText }} // Set innerHTML to display formatted comment
             ></div>
           </div>
