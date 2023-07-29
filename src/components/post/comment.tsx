@@ -21,10 +21,7 @@ function Comment() {
     var postedTime = new Date().toLocaleString().toString();
     setCommentPosted(true);
     setPostedTime(postedTime);
-    debugger;
-    console.log(postedTime);
     const newPostedTimes = postedTimes.concat(postedTime);
-    console.log(postedTimes);
     setPostedTimes(newPostedTimes);
     // Simulate a delay to reset the "Post" button color after a short time
     setTimeout(() => {

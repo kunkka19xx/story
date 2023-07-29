@@ -32,8 +32,8 @@ function Home() {
                 <OutStanding />
               </div>
             </div>
-
-            <div id="tag-title" className="ml-2 mt-8 mb-2 text-center">
+            <hr className="mt-4" />
+            <div id="tag-title" className="ml-2 mt-3 mb-2 text-center">
               <h3 className="font-semibold font-sans ">
                 Discover more of what matters to you
               </h3>
