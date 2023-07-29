@@ -3,6 +3,7 @@ import Info from "./info";
 import Content from "./content";
 import Comment from "./comment";
 import Buttonbar from "../buttonbar";
+import Footer from "../footer";
 
 function PostDetail() {
   return (
@@ -29,6 +30,7 @@ function PostDetail() {
         <hr className="mt-3 mb-3"></hr>
         <div className="w-1/4 border-l border-gray-500"></div>
       </div>
+      <Footer></Footer>
     </section>
   );
 }

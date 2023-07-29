@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MiniPost from "@/components/mini-post/miniPost";
 import Post from "@/components/post/post";
@@ -25,10 +26,8 @@ function Home() {
           <MiniPost key={index} />
         ))}
       </div>
-      
-      <div>
-        
-      </div>
+
+      <Footer></Footer>
     </section>
   );
 }
