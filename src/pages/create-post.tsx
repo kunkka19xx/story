@@ -3,13 +3,19 @@ import Header from "@/components/header";
 import React, { useState } from "react";
 
 function CreatePost() {
+  const [title, setTitle] = useState("");
   const [contentList, setContentList] = useState<
     { id: number; content: string; img: string }[]
   >([{ id: 1, content: "", img: "" }]);
 
+  const [imgList, setImgList] = useState<{ id: number; image: string }[]>([
+    { id: 1, image: "" },
+  ]);
+
   const handleAddContent = () => {
     const newId = contentList.length + 1;
     setContentList([...contentList, { id: newId, content: "", img: "" }]);
+    setImgList([...imgList, { id: newId, image: "" }]);
   };
 
   const handleContentChange = (id: number, value: string) => {
@@ -20,8 +26,34 @@ function CreatePost() {
     );
   };
 
+  const handleImgChange = (
+    id: number,
+    img: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = img.target.files && img.target.files[0];
+    console.log(id);
+    if (file) {
+      const fileContent = URL.createObjectURL(file);
+      const reader = new FileReader();
+      setImgList((prevImgList) =>
+        prevImgList.map((item) =>
+          item.id === id ? { ...item, image: fileContent } : item
+        )
+      );
+
+      console.log(imgList);
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleAddImage = () => {};
+
   const handlePost = () => {};
+
+  const hanldeTitleChange = () => {
+    if (!title) return;
+    setTitle(title);
+  };
 
   return (
     <section className="min-h-screen flex flex-col">
@@ -35,10 +67,10 @@ function CreatePost() {
               Let write some thing!
             </h2>
             <div className="flex flex-col">
-              <label className="mb-1 ml-1" htmlFor="">
-                Title
-              </label>
+              <label className="mb-1 ml-1">Title</label>
               <textarea
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
                 placeholder="Write your post's title!"
                 className="ml-3 mr-3 mb-3 border rounded-md h-10"
               ></textarea>
@@ -46,9 +78,7 @@ function CreatePost() {
                 {contentList.map((item) => (
                   <li key={item.id} className="flex flex-col">
                     <div>
-                      <label className="mb-1 ml-1" htmlFor="">
-                        Content {item.id}
-                      </label>
+                      <label className="mb-1 ml-1">Content {item.id}</label>
                     </div>
 
                     <textarea
@@ -60,8 +90,10 @@ function CreatePost() {
                       }
                     ></textarea>
                     <div className="w-full ">
-                      <input 
+                      <input
                         onClick={handleAddImage}
+                        value={item.img || undefined}
+                        onChange={(e) => handleImgChange(item.id, e)}
                         className=" float-right bg-zinc-200 mr-3 text-sm  w-1/2 mb-1 rounded  hover:bg-purple-300 hover:italic hover:text-black"
                         type="file"
                       ></input>
@@ -88,6 +120,26 @@ function CreatePost() {
           </div>
           <div className="w-1/2 mt-2 mb-2">
             <h2 className="text-center text-lg font-sans">Preview</h2>
+            <div id="id-title" className="mt-3">
+              <h2 className="text-center text-xl mb-2 ">
+                {title.toLocaleUpperCase()}
+              </h2>
+            </div>
+
+            <div className="w-full flex flex-col">
+              <ol>
+                {contentList.map((item) => (
+                  <li key={item.id} className="flex flex-col">
+                    <p className="ml-2 mr-2 text-sm">{item.content}</p>
+                    <img
+                      className="ml-2 mr-2 mb-2 mt-2 rounded-lg"
+                      src={imgList[item.id - 1]["image"]}
+                      alt=""
+                    />
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
       </div>
