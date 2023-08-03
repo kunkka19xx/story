@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 function CommentHeader() {
   const [author, setAuthor] = useState("Hao Nguyen");
-  
 
   const changeAuthor = (newAuthor: string) => {
     setAuthor(newAuthor);
@@ -32,7 +31,6 @@ function CommentHeader() {
           </div>
         </div>
       </div>
-     
     </section>
   );
 }
