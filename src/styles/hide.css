@@ -4,7 +4,7 @@
     display: block; /* Display the component by default */
   }
   
-  /* Media query to hide the MiniContent component on small screens (max-width: 600px) */
+  /* Media query to hide the MiniContent component on small screens (max-width: 975px) */
   @media (max-width: 975px) {
     .hide-on-small-screen {
       display: none; /* Hide the component on small screens */
