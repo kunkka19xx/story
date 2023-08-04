@@ -10,6 +10,7 @@ function PostDetail() {
     id: 1,
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni repellat voluptatibus unde corporis quis. Alias ipsam ducimus hic rem non libero unde, voluptas nam, officia ex officiis consequatur? Eius nobis, culpa enim reprehenderit voluptatibus sunt sint harum voluptates. Accusantium odio, itaque laudantium reprehenderit possimus veniam aut saepe ea cupiditate veritatis, at repudiandae eius tenetur fugit nostrum libero exercitationem ipsam. Ducimus commodi sint, consequatur tenetur enim cumque tempore saepe illum architecto nihil odio asperiores ipsam ullam velit veniam a inventore omnis numquam repellendus fugiat quis quo in sit unde? Deserunt, rerum! Accusamus ipsam officiis exercitationem est aliquid doloremque assumenda quod non.",
+    img:""
   };
 
   return (

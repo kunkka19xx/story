@@ -8,6 +8,10 @@ function CreatePost() {
     { id: number; content: string; img: string }[]
   >([{ id: 1, content: "", img: "" }]);
 
+  const [body, setBody] = useState<
+    { id: number; content: string; imageData: string }[]
+  >([{ id: 1, content: "", imageData: "" }]);
+
   const [imgList, setImgList] = useState<{ id: number; image: string }[]>([
     { id: 1, image: "" },
   ]);
@@ -16,11 +20,18 @@ function CreatePost() {
     const newId = contentList.length + 1;
     setContentList([...contentList, { id: newId, content: "", img: "" }]);
     setImgList([...imgList, { id: newId, image: "" }]);
+    setBody([...body, { id: newId, content: "", imageData: "" }]);
   };
 
   const handleContentChange = (id: number, value: string) => {
     setContentList((prevContentList) =>
       prevContentList.map((item) =>
+        item.id === id ? { ...item, content: value } : item
+      )
+    );
+
+    setBody((prevBody) =>
+      prevBody.map((item) =>
         item.id === id ? { ...item, content: value } : item
       )
     );
@@ -31,24 +42,54 @@ function CreatePost() {
     img: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = img.target.files && img.target.files[0];
-    console.log(id);
     if (file) {
       const fileContent = URL.createObjectURL(file);
       const reader = new FileReader();
-      setImgList((prevImgList) =>
-        prevImgList.map((item) =>
-          item.id === id ? { ...item, image: fileContent } : item
-        )
-      );
+      if (id === 1) {
+        console.log("nhu cut");
+        setImgList((prevImgList) =>
+          prevImgList.map((item) =>
+            item.id === 1
+              ? { ...item, image: fileContent }
+              : { ...item, image: fileContent }
+          )
+        );
 
-      console.log(imgList);
+        setBody((prevBody) =>
+          prevBody.map((item) =>
+            item.id === id ? { ...item, imageData: fileContent } : item
+          )
+        );
+      } else {
+        setImgList((prevImgList) =>
+          prevImgList.map((item) =>
+            item.id === id ? { ...item, image: fileContent } : item
+          )
+        );
+        setBody((prevBody) =>
+          prevBody.map((item) =>
+            item.id === id ? { ...item, imageData: fileContent } : item
+          )
+        );
+      }
       reader.readAsDataURL(file);
     }
   };
 
   const handleAddImage = () => {};
 
-  const handlePost = () => {};
+  // handle post
+  // call post api
+  const handlePost = async () => {
+    const response = await fetch("api/post", {
+      method: "POST",
+      body: JSON.stringify({ title, body }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+  };
 
   const hanldeTitleChange = () => {
     if (!title) return;
@@ -130,9 +171,16 @@ function CreatePost() {
               <ol>
                 {contentList.map((item) => (
                   <li key={item.id} className="flex flex-col">
-                    <p className="ml-2 mr-2 text-sm">{item.content}</p>
+                    <p
+                      className="ml-2 mr-2 text-sm"
+                      dangerouslySetInnerHTML={{
+                        __html: item.content.replace(/\n/g, "<br>"),
+                      }}
+                    >
+                      {}
+                    </p>
                     <img
-                      className="ml-2 mr-2 mb-2 mt-2 rounded-lg"
+                      className="ml-2 mr-2 mb-2 mt-2 rounded-lg border"
                       src={imgList[item.id - 1]["image"]}
                       alt=""
                     />
