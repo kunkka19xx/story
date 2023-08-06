@@ -1,17 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Info from "./info";
 import Content from "./content";
 import Comment from "./comment";
 import Buttonbar from "../buttonbar";
 import Footer from "../footer";
+import { useRouter } from "next/router";
+import { PostContent } from "@/model/PostModel";
 
 function PostDetail() {
-  const content = {
-    id: 1,
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni repellat voluptatibus unde corporis quis. Alias ipsam ducimus hic rem non libero unde, voluptas nam, officia ex officiis consequatur? Eius nobis, culpa enim reprehenderit voluptatibus sunt sint harum voluptates. Accusantium odio, itaque laudantium reprehenderit possimus veniam aut saepe ea cupiditate veritatis, at repudiandae eius tenetur fugit nostrum libero exercitationem ipsam. Ducimus commodi sint, consequatur tenetur enim cumque tempore saepe illum architecto nihil odio asperiores ipsam ullam velit veniam a inventore omnis numquam repellendus fugiat quis quo in sit unde? Deserunt, rerum! Accusamus ipsam officiis exercitationem est aliquid doloremque assumenda quod non.",
-    img:""
-  };
+  const [post, setPost] = useState<PostContent | null>(null);
+  const router = useRouter();
+  const postId = router.query.postId;
+
+  useEffect(() => {
+    if (postId) {
+      fetchPostDetails();
+    }
+  }, [postId]);
+
+  async function fetchPostDetails() {
+    try {
+      const response = await fetch(`/api/detail/${postId}`);
+      const data = await response.json();
+      if (response.status !== 200) {
+        const message = data.message;
+        const cause =data.cause;
+        window.location.href = `/error?message=${encodeURIComponent(
+          message
+        )}&cause=${encodeURIComponent(cause)}`;
+      }
+      setPost(data);
+    } catch (error) {
+      console.error("Error fetching post details:", error);
+    }
+  }
+
+  if (!post) return null;
 
   return (
     <section className="min-h-screen flex flex-col">
@@ -19,7 +43,7 @@ function PostDetail() {
         <div className="w-1/4 border-r border-gray-300 hide-on-small-screen"></div>
         <div id="id-detail-content" className="w-1/2 pl-2 pr-2">
           <div>
-            <Info></Info>
+            <Info post={post}></Info>
           </div>
           <hr />
           <div>
@@ -27,7 +51,7 @@ function PostDetail() {
           </div>
           <hr />
           <div>
-            <Content post={content}></Content>
+            <Content content={post.content}></Content>
           </div>
           <hr className="mt-3" />
           <div className="mt-3">
@@ -39,7 +63,7 @@ function PostDetail() {
       </div>
       {/* <div className="min-h-screen flex flex-col">
         <div className="flex-1"></div> */}
-        <Footer></Footer>
+      <Footer></Footer>
       {/* </div> */}
     </section>
   );

@@ -1,15 +1,20 @@
 import React from "react";
-import { PostContent } from "./PostContent";
+import { PostContent } from "../../model/PostModel";
 
-interface PostContentProps {
-  post: PostContent;
+interface ContentProps {
+  content: PostContent['content'] | undefined;
 }
 
-const Content: React.FC<PostContentProps> = ({ post }) => {
+
+const Content: React.FC<ContentProps> = ({ content }) => {
   return (
     <div>
-      <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
-      <img src={post.img}></img>
+    {content && content.map((item) => (
+    <div key={item.id}>
+      <div dangerouslySetInnerHTML={{ __html: item.content.replace(/\n/g, "<br>") }}></div>
+      <img src={item.img}></img>
+    </div>
+    ))}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import Footer from "@/components/footer";
+import { APPLICATION_JSON, METHOD_POST } from "@/constants/headerConstant";
 import Header from "@/components/header";
 import React, { useState } from "react";
 
@@ -82,10 +83,10 @@ function CreatePost() {
   // call post api
   const handlePost = async () => {
     const response = await fetch("api/post", {
-      method: "POST",
+      method: METHOD_POST,
       body: JSON.stringify({ title, body }),
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": APPLICATION_JSON,
       },
     });
     const data = await response.json();
