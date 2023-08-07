@@ -30,11 +30,17 @@ function Header() {
               <a href="/top" className="px-6 hover:text-red-400 hover:italic">
                 Top Post
               </a>
-              <a href="/story" className="px-6 hover:text-red-400 hover:italic">
-                Life Story
-              </a>
               <a href="/tech" className="px-6 hover:text-red-400 hover:italic">
                 Tech
+              </a>
+              <a href="/story" className="px-6 hover:text-red-400 hover:italic">
+                 Story
+              </a>
+              <a
+                href="/service"
+                className="px-6 hover:text-red-400 hover:italic"
+              >
+                Service
               </a>
               <a
                 href="/contact"

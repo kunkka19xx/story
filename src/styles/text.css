@@ -1,0 +1,10 @@
+.outline-text {
+  display: block;
+}
+ #id-outline {
+  color: whitesmoke;
+  text-shadow: -1px -1px 0 rgb(51, 50, 47), 1px -1px 0 rgb(51, 50, 47), -1px 1px 0 rgb(51, 50, 47),
+    1px 1px 0 rgb(51, 50, 47);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3em;
+}
