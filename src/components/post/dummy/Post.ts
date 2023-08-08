@@ -7,6 +7,11 @@ export var POST = {
       content:
         "Chung ta dang noi ve van menh cua quoc gia. " +
         " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
         " \n se bi thua",
       img: "blob:http://localhost:3000/813916b9-0e15-496a-978d-ff6751b01439",
     },
@@ -24,8 +29,7 @@ export var LIST_POST = [
       {
         id: 1,
         content:
-          "Chung ta dang noi ve van menh cua quoc gia. " +
-          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+          
           " \n se bi thua",
         img: "blob:http://localhost:3000/813916b9-0e15-496a-978d-ff6751b01439",
       },
@@ -41,9 +45,14 @@ export var LIST_POST = [
       {
         id: 1,
         content:
-          "Chung ta dang noi ve van menh cua quoc gia. " +
-          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
-          " \n se bi thua",
+        "Chung ta dang noi ve van menh cua quoc gia. " +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+        " \n se bi thua",
         img: "blob:http://localhost:3000/813916b9-0e15-496a-978d-ff6751b01439",
       },
     ],

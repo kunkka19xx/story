@@ -12,7 +12,7 @@ const MiniTop: React.FC<PostProps> = ({ post }) => {
   };
 
   return (
-    <section className="mb-2 mt-2">
+    <section className="mb-2">
       <div className="flex flex-row items-center mb-2">
         <div className="rounded-full overflow-hidden w-8 h-8">
           <img src="/assets/avatar/avatar.jpeg" alt="" className="" />
@@ -32,8 +32,8 @@ const MiniTop: React.FC<PostProps> = ({ post }) => {
       </div>
       {/* Title */}
       <div className="">
-        <h1 className="text-lg mb-2 text-neutral-600 font-serifs italic">
-          <a href={"/detail/".concat(post.id.toString())}> {post.title}</a>
+        <h1 className="text-lg mb-2 text-emerald-850 font-sans italic hover:font-semibold hover:text-yellow-700 hover:underline hover:not-italic">
+          <a href={"/detail/".concat(post.id.toString())}> {post.title.toLocaleUpperCase()}</a>
         </h1>
       </div>
     </section>

@@ -50,7 +50,7 @@ function PostDetail() {
             <Buttonbar></Buttonbar>
           </div>
           <hr />
-          <div>
+          <div className="ml-1 mr-1">
             <Content content={post.content}></Content>
           </div>
           <hr className="mt-3" />

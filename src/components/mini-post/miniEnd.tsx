@@ -9,11 +9,14 @@ function MiniEnd() {
   };
 
   return (
-    <section className="font-thin italic">
-      <div className="flex flex-row mt-2">
-        <p className="mr-2">Created at: {createdDate.toDateString()},</p>
-        <div className="mr-2">{duration} minutes to read.</div>
-        <button>Tags</button>
+    <section className="font-thin italic h-full">
+      <div className="relative h-full grid-rows-2 flex flex-col">
+        <div className="row-span-1"></div>
+        <div className="absolute inset-x-0 bottom-0 lg:flex md:flex flex-row mt-1 sm:flex-wrap">
+          <p className="mr-2">Created at: {createdDate.toDateString()},</p>
+          <p className="mr-2">{duration} minutes to read.</p>
+          <button>Tags</button>
+        </div>
       </div>
     </section>
   );

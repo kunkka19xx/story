@@ -33,4 +33,10 @@
     justify-content: left;
     margin-left: 20px;
   }
+
+  #id-detail-content{
+    flex: content;
+    flex-direction: column;
+    width: max-content;
+  }
 }

@@ -26,8 +26,8 @@ const MiniContent: React.FC<ContentProps> = ({content})=> {
 
   return (
     <div>
-      <div className="h-50">
-        <p className="h-50">{setContent(content)}</p>
+      <div className="">
+        <p className="font-light">{setContent(content)}</p>
       </div>
     </div>
   );
