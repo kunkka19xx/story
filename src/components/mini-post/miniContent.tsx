@@ -1,35 +1,36 @@
+import { Content, PostContent } from "@/model/PostModel";
 import React, { useEffect, useState } from "react";
 
-function MiniContent() {
-  const [content, setContent] = useState("");
+interface ContentProps {
+  content: PostContent['content'] ;
+}
 
-  useEffect(() => {
-    // Fetch content from the API
-    fetch("/api/sample-content")
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the content state with the fetched data
-        setContent(data.content);
-      })
-      .catch((error) => {
-        console.error("Error fetching content:", error);
-      });
-  }, []);
-
-  // Function to truncate the content to the first 50 words
+const MiniContent: React.FC<ContentProps> = ({content})=> {
+  
   const truncateContent = (text: string, length: number) => {
     const words = text.split(" ");
     const truncatedText = words.slice(0, length).join(" ");
     return truncatedText + (words.length > length ? "..." : "");
   };
 
+  const setContent = (content : Content[]) => {
+    console.log(content)
+    if (!content || content.length ===  0) return ""; 
+    var finalContent = ""
+    for(let i = 0; i< content.length; i++){
+      if(finalContent.length > 60) return truncateContent(finalContent, 60);
+      finalContent = finalContent.concat(content[i].content);
+    }
+    return truncateContent(finalContent, 60);
+  }
+
   return (
     <div>
       <div className="h-50">
-        <p className="h-50">{truncateContent(content, 60)}</p>
+        <p className="h-50">{setContent(content)}</p>
       </div>
     </div>
   );
-}
+};
 
 export default MiniContent;

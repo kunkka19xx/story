@@ -2,12 +2,13 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MiniPost from "@/components/mini-post/miniPost";
 import Paging from "@/components/paging";
+import { LIST_POST } from "@/components/post/dummy/Post";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
 import React from "react";
 
 function Home() {
-  const miniPostData = new Array(9).fill(null);
+  const miniPostData = LIST_POST;
 
   return (
     <section className="min-h-screen flex flex-col ">
@@ -19,7 +20,7 @@ function Home() {
         <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2">
           <div>
             {miniPostData.map((_, index) => (
-              <MiniPost key={index} />
+              <MiniPost key={index} post={miniPostData[index]} />
             ))}
           </div>
           <div className="mt-2">

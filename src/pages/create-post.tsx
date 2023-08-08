@@ -102,12 +102,18 @@ function CreatePost() {
       <div className="z-50 pb-16">
         <Header></Header>
       </div>
-      <div className="flex-grow">
-        <div className="flex flex-wrap">
-          <div className="w-1/2 min-h-screen border-r mt-2 mb-2">
-            <h2 className="text-center text-lg font-sans">
-              Let write some thing!
-            </h2>
+      <div id="id-create-post" className="flex-grow wrap-on-small-screen">
+        <div id="id-create-post-child" className="flex h-full"> {/*flex-wrap*/}
+          <div
+            id="id-create-part"
+            className="w-1/2 h-full border-r mt-2 mb-2 wrap-on-small-screen"
+          >
+            <div className="w-full">
+              <h2 className="text-center text-lg font-sans">
+                Let write some thing!
+              </h2>
+            </div>
+
             <div className="flex flex-col">
               <label className="mb-1 ml-1">Title</label>
               <textarea
@@ -133,6 +139,7 @@ function CreatePost() {
                     ></textarea>
                     <div className="w-full ">
                       <input
+                        id="id-input-image"
                         onClick={handleAddImage}
                         value={item.img || undefined}
                         onChange={(e) => handleImgChange(item.id, e)}
@@ -160,12 +167,18 @@ function CreatePost() {
               </button>
             </div>
           </div>
-          <div className="w-1/2 mt-2 mb-2">
-            <h2 className="text-center text-lg font-sans">Preview</h2>
-            <div id="id-title" className="mt-3">
-              <h2 className="text-center text-xl mb-2 ">
-                {title.toLocaleUpperCase()}
-              </h2>
+          <div
+            id="id-preview-part"
+            className="w-1/2 mt-2 mb-2 wrap-on-small-screen"
+          >
+            <div className="w-full">
+              <h2 className="text-center text-lg font-sans">Preview</h2>
+            </div>
+            <div
+              id="id-title"
+              className="mt-3 text-center wrap-on-small-screen"
+            >
+              <h2 className="text-xl mb-2 ">{title.toLocaleUpperCase()}</h2>
             </div>
 
             <div className="w-full flex flex-col">

@@ -1,0 +1,34 @@
+/* Default styles for the MiniContent component */
+.wrap-on-small-screen {
+  display: block;
+}
+
+@media (max-width: 975px) {
+  .wrap-on-small-screen {
+    display: contents;
+  }
+
+  #id-create-post {
+    flex-direction: column;
+  }
+
+  #id-create-post-child {
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+  }
+
+  #id-create-part {
+    width: max-content;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #id-preview-part {
+    width: max-content;
+  }
+
+  #id-input-image {
+    width: max-content;
+  }
+}

@@ -8,7 +8,7 @@ function Service() {
       <div className="z-50 pb-16">
         <Header></Header>
       </div>
-      <div className="flex flex-grow bg-gradient-to-bl from-white to-indigo-200">
+      <div className="flex flex-grow bg-gradient-to-bl from-white to-orange-50">
         <div className="container mt-8 mx-auto md:px-6">
           <section className="mb-20">
             <h2 className="mb-12 text-center text-3xl font-sans text-gray-700 font-semibold">
