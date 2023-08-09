@@ -6,6 +6,7 @@ import Buttonbar from "../buttonbar";
 import Footer from "../footer";
 import { useRouter } from "next/router";
 import { PostContent } from "@/model/PostModel";
+import TagGroup from "../right/tagGroup";
 
 function PostDetail() {
   const [post, setPost] = useState<PostContent | null>(null);
@@ -24,7 +25,7 @@ function PostDetail() {
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;
-        const cause =data.cause;
+        const cause = data.cause;
         window.location.href = `/error?message=${encodeURIComponent(
           message
         )}&cause=${encodeURIComponent(cause)}`;
@@ -54,6 +55,9 @@ function PostDetail() {
             <Content content={post.content}></Content>
           </div>
           <hr className="mt-3" />
+          <div className="">
+            <TagGroup tags={post.tags}></TagGroup>
+          </div>
           <div className="mt-3">
             <Comment></Comment>
           </div>

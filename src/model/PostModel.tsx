@@ -5,6 +5,7 @@ export interface PostContent {
   author: string;
   createdDate: Date;
   length: number;
+  tags:string[];
 }
 
 export interface Content {

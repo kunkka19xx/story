@@ -19,6 +19,7 @@ export var POST = {
   author: "Kunkka",
   createdDate: new Date("2023-01-01 12:12:12"),
   length: 6,
+  tags:["technical", "java", "ai", "deep learning"]
 };
 
 export var LIST_POST = [
@@ -37,6 +38,7 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
+    tags:["technical", "java", "ai", "deep learning"]
   },
   {
     id: 2,
@@ -59,6 +61,7 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
+    tags:["technical", "java", "ai", "deep learning"]
   },
   {
     id: 3,
@@ -76,6 +79,7 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
+    tags:["technical", "java", "ai", "deep learning"]
   },
   {
     id: 4,
@@ -93,6 +97,7 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
+    tags:["technical", "java", "ai", "deep learning"]
   },
   {
     id: 5,
@@ -110,6 +115,7 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
+    tags:["technical", "java", "ai", "deep learning"]
   },
   {
     id: 6,
@@ -127,6 +133,7 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
+    tags:["technical", "java", "ai", "deep learning"]
   },
   {
     id: 7,
@@ -144,5 +151,24 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
+    tags:["technical", "java", "ai", "deep learning"]
+  },
+  {
+    id: 7,
+    title: "Bai viet ve mot con dog",
+    content: [
+      {
+        id: 1,
+        content:
+          "Chung ta dang noi ve van menh cua quoc gia. " +
+          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+          " \n se bi thua",
+        img: "blob:http://localhost:3000/813916b9-0e15-496a-978d-ff6751b01439",
+      },
+    ],
+    author: "Kunkka",
+    createdDate: new Date("2023-01-01 12:12:12"),
+    length: 6,
+    tags:["dog"]
   },
 ];

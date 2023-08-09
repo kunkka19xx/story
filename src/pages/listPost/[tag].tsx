@@ -5,10 +5,39 @@ import Paging from "@/components/paging";
 import { LIST_POST } from "@/components/post/dummy/Post";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
-import React from "react";
+import { PostContent } from "@/model/PostModel";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-function Home() {
-  const miniPostData = LIST_POST;
+function listPost() {
+  const [miniPostData, setMiniPostData] = useState<PostContent[]>();
+  const router = useRouter();
+  const tag = router.query.tag;
+  useEffect(() => {
+    if (tag) {
+      fetchPostByTag();
+    }
+    // else setMiniPostData(LIST_POST);
+  }, [tag]);
+
+  async function fetchPostByTag() {
+    try {
+      const response = await fetch(`/api/listPost/${tag}`);
+      const data = await response.json();
+      if (response.status !== 200) {
+        const message = data.message;
+        const cause = data.cause;
+        window.location.href = `/error?message=${encodeURIComponent(
+          message
+        )}&cause=${encodeURIComponent(cause)}`;
+      }
+      setMiniPostData(data);
+    } catch (error) {
+      console.error("Error fetching post details:", error);
+    }
+  }
+
+  if (!miniPostData) return null;
 
   return (
     <section className="min-h-screen flex flex-col ">
@@ -51,7 +80,7 @@ function Home() {
             <div id="may-you-like-tag" className="flex">
               <div className="w-1/6"></div>
               <div className="w-3/4">
-                <TagGroup tags={["dog"]}></TagGroup>
+                <TagGroup tags={["fake", "dummy"]}></TagGroup>
               </div>
             </div>
           </div>
@@ -62,4 +91,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default listPost;

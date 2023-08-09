@@ -7,12 +7,16 @@ const listPost = LIST_POST;
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { postId } = req.query;
 
-  const result = listPost.filter(e => postId === e.id.toString())[0];
+  const result = listPost.filter((e) => postId === e.id.toString())[0];
 
   if (!result) {
     return res
       .status(404)
-      .json({ status: "error", message: "Bài viết không tồn tại", cause: "Nhu cut!" });
+      .json({
+        status: "error",
+        message: "Bài viết không tồn tại",
+        cause: "Id bai viet khong ton tai!",
+      });
   }
 
   // const post = postData.id;
