@@ -12,3 +12,9 @@
     visibility: visible;
   }
 }
+
+@media (min-width:976px) {
+    #id-side-bar{
+        display: none;
+    }
+}

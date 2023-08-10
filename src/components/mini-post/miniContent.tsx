@@ -25,7 +25,7 @@ const MiniContent: React.FC<ContentProps> = ({content})=> {
 
   return (
     <div>
-      <div className="">
+      <div className="mr-1">
         <p className="font-light">{setContent(content)}</p>
       </div>
     </div>

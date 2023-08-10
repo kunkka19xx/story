@@ -48,7 +48,7 @@ function ListPost() {
         <div className="lg:w-1/6 border-r border-gray-400"></div>
         {/* <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2"> */}
         <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
-          <div>
+          <div className="flex-grow">
             {miniPostData.map((_, index) => (
               <MiniPost key={index} post={miniPostData[index]} />
             ))}

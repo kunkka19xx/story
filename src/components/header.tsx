@@ -17,25 +17,25 @@ function Header() {
         <div className="h-14 flex  justify-items-center items-center bg-gradient-to-r from-indigo-400 bg-opacity-100">
           {/* header bar */}
           <button
-                id="id-toggle-button"
-                className="ml-2 hidden show-on-small-screen"
-                onClick={handleClickToggle}
+            id="id-toggle-button"
+            className="ml-2 hidden show-on-small-screen"
+            onClick={handleClickToggle}
+          >
+            <span className="block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:text-black">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-6 w-6 hover:h-7 hover:w-7"
               >
-                <span className="block [&>svg]:h-6 [&>svg]:w-6 [&>svg]:text-black">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="h-6 w-6 hover:h-7 hover:w-7"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
-              </button>
+                <path
+                  fillRule="evenodd"
+                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
           <div className="hide-on-small-screen">
             <div className="flex ">
               <a
