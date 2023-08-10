@@ -1,0 +1,14 @@
+/* Default styles for the MiniContent component */
+.show-on-small-screen {
+  display: none; /* Display the component by default */
+}
+
+@media (max-width: 975px) {
+  .show-on-small-screen {
+    visibility: visible;
+  }
+  #id-toggle-button {
+    display: block;
+    visibility: visible;
+  }
+}

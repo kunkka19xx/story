@@ -119,7 +119,7 @@ function Footer() {
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
           © 2023 Copyright
-          <a className="text-whitehite italic" target="_blank" href="https://www.facebook.com/SaharaStudio2022">
+          <a className="text-whitehite italic" target="_blank" href="https://www.facebook.com/CodingByNoah">
           : Noah
           </a>
         </div>

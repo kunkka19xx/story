@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import "@/styles/hide.css";
 import "@/styles/text.css";
 import "@/styles/wrap.css";
+import "@/styles/show.css";
+
 import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
