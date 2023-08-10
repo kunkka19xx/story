@@ -47,7 +47,6 @@ function CreatePost() {
       const fileContent = URL.createObjectURL(file);
       const reader = new FileReader();
       if (id === 1) {
-        console.log("nhu cut");
         setImgList((prevImgList) =>
           prevImgList.map((item) =>
             item.id === 1

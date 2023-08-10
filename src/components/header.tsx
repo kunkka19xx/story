@@ -4,7 +4,7 @@ function Header() {
   return (
     <header className="fixed top-0 z-50 w-full">
       <nav>
-        <div className="h-16 flex  justify-items-center items-center bg-gradient-to-r from-indigo-400 bg-opacity-100">
+        <div className="h-14 flex  justify-items-center items-center bg-gradient-to-r from-indigo-400 bg-opacity-100">
           <div className="hide-on-small-screen">
             <div className="flex ">
               <a

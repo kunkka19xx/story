@@ -17,7 +17,6 @@ function Buttonbar() {
   };
 
   const scrollToComment = () => {
-    console.log("Iloveyou");
     window.scrollBy(0, 1000);
   };
 

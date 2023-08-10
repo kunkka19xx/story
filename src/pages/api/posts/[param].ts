@@ -5,9 +5,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 const listPost = LIST_POST;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { tag } = req.query;
+  const { param } = req.query;
   var result;
-  if (tag) result = listPost.filter((e) => e.tags.includes(tag.toString()));
+  if (param) result = listPost.filter((e) => e.tags.includes(param.toString()));
   else result = listPost;
   if (result.length===0) {
     return res.status(404).json({

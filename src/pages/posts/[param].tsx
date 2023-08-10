@@ -2,17 +2,17 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MiniPost from "@/components/mini-post/miniPost";
 import Paging from "@/components/paging";
-import { LIST_POST } from "@/components/post/dummy/Post";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
 import { PostContent } from "@/model/PostModel";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-function listPost() {
+function ListPost() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
   const router = useRouter();
-  const tag = router.query.tag;
+  const tag = router.query.param;
+  console.log(tag);
   useEffect(() => {
     if (tag) {
       fetchPostByTag();
@@ -22,7 +22,7 @@ function listPost() {
 
   async function fetchPostByTag() {
     try {
-      const response = await fetch(`/api/listPost/${tag}`);
+      const response = await fetch(`/api/posts/${tag}`);
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;
@@ -91,4 +91,4 @@ function listPost() {
   );
 }
 
-export default listPost;
+export default ListPost;

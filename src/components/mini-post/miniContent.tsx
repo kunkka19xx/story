@@ -14,7 +14,6 @@ const MiniContent: React.FC<ContentProps> = ({content})=> {
   };
 
   const setContent = (content : Content[]) => {
-    console.log(content)
     if (!content || content.length ===  0) return ""; 
     var finalContent = ""
     for(let i = 0; i< content.length; i++){

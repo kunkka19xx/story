@@ -6,6 +6,7 @@ export interface PostContent {
   createdDate: Date;
   length: number;
   tags:string[];
+  categories:string[];
 }
 
 export interface Content {

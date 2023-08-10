@@ -19,7 +19,8 @@ export var POST = {
   author: "Kunkka",
   createdDate: new Date("2023-01-01 12:12:12"),
   length: 6,
-  tags:["technical", "java", "ai", "deep learning"]
+  tags:["technical", "java", "ai", "deep learning"],
+  categories:["story","tech","service"],
 };
 
 export var LIST_POST = [
@@ -38,7 +39,8 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"]
+    tags:["technical", "java", "ai", "deep learning"],
+    categories:["story","tech","service"],
   },
   {
     id: 2,
@@ -61,7 +63,8 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"]
+    tags:["technical", "java", "ai", "deep learning"],
+    categories:["story","tech","service"],
   },
   {
     id: 3,
@@ -79,7 +82,8 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"]
+    tags:["technical", "java", "ai", "deep learning"],
+    categories:["tech","service"],
   },
   {
     id: 4,
@@ -97,7 +101,8 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"]
+    tags:["technical", "java", "ai", "deep learning"],
+    categories:["story","service"],
   },
   {
     id: 5,
@@ -115,7 +120,8 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"]
+    tags:["technical", "java", "ai", "deep learning"],
+    categories:["story","tech","service"],
   },
   {
     id: 6,
@@ -133,7 +139,8 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"]
+    tags:["technical", "java", "ai", "deep learning"],
+    categories:["story","tech","service"],
   },
   {
     id: 7,
@@ -151,10 +158,11 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"]
+    tags:["technical", "java", "ai", "deep learning"],
+    categories:["service"],
   },
   {
-    id: 7,
+    id: 8,
     title: "Bai viet ve mot con dog",
     content: [
       {
@@ -169,6 +177,7 @@ export var LIST_POST = [
     author: "Kunkka",
     createdDate: new Date("2023-01-01 12:12:12"),
     length: 6,
-    tags:["dog"]
+    tags:["dog"],
+    categories:["story","tech",],
   },
 ];

@@ -20,18 +20,18 @@ function OutStanding() {
             <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
           </a>
         </div>
-        <div className="p-6">
+        <div className="p-4">
           <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
             Title
           </h5>
-          <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem ullam illum impedit quas minima optio odit molestiae dolore delectus id.
+          <p className="mb-3 text-base text-neutral-600 dark:text-neutral-200">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dolor harum neque aliquam iste explicabo?
           </p>
           <Link href="/detail">
             <button
               onClick={handleClickOutStanding}
               type="button"
-              className="inline-block rounded px-6 pb-2 pt-2.5 
+              className="inline-block rounded px-6 pb-1.5 pt-1.5 
             text-xs font-medium uppercase leading-normal 
             text-white shadow-[0_4px_9px_-4px_#3b71ca] 
             transition duration-150 ease-in-out 
