@@ -11,6 +11,10 @@ function Header() {
     }
   };
 
+  const handleSearchButton = () => {
+
+  };
+
   return (
     <header className="fixed top-0 z-50 w-full">
       <nav>
@@ -81,16 +85,17 @@ function Header() {
               </a>
             </div>
           </div>
-          <div id="id-search-box" className="relative w-96  ml-auto mr-10">
+          <div id="id-search-box" className="relative w-96 ml-auto mr-5">
             <form action="" className="flex h-full">
               <input
                 type="text"
-                className=" pr-16 w-full px-3 py-2 bg-white rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                className="pr-16 w-full px-3 py-2 bg-white rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 placeholder="Search..."
               ></input>
               <div className="absolute inset-y-0 right-0 flex items-center pl-2 pr-0">
                 <button
                   type="submit"
+                  onClick={handleSearchButton}
                   className=" bg-white hover:bg-blue-600 text-white font-semibold flex end-0 py-2 px-2 rounded-md"
                 >
                   🔎

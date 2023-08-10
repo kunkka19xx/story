@@ -17,15 +17,15 @@ const MiniContent: React.FC<ContentProps> = ({content})=> {
     if (!content || content.length ===  0) return ""; 
     var finalContent = ""
     for(let i = 0; i< content.length; i++){
-      if(finalContent.length > 60) return truncateContent(finalContent, 60);
+      if(finalContent.length > 60) return truncateContent(finalContent, 50);
       finalContent = finalContent.concat(content[i].content);
     }
-    return truncateContent(finalContent, 60);
+    return truncateContent(finalContent, 50);
   }
 
   return (
     <div>
-      <div className="mr-1">
+      <div className="mr-3">
         <p className="font-light">{setContent(content)}</p>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { PostContent } from "@/model/PostModel";
 import React, { useState } from "react";
 
+
 interface PostProps {
   post: PostContent;
 }
@@ -33,7 +34,10 @@ const MiniTop: React.FC<PostProps> = ({ post }) => {
       {/* Title */}
       <div className="">
         <h1 className="text-lg mb-2 text-emerald-850 font-sans italic hover:font-semibold hover:text-yellow-700 hover:underline hover:not-italic">
-          <a href={"/detail/".concat(post.id.toString())}> {post.title.toLocaleUpperCase()}</a>
+          <a href={"/detail/".concat(post.id.toString())}>
+            {" "}
+            {post.title.toLocaleUpperCase()}
+          </a>
         </h1>
       </div>
     </section>

@@ -39,11 +39,31 @@ function Comment() {
 
   return (
     <section>
-      <div className="mt-3">
-        <div className="relative mb-3" data-te-input-wrapper-init>
+      <div className="mt-1">
+        <div className="relative mb-2" data-te-input-wrapper-init>
+          <div className="flex mb-0">
+            <div className="w-1/2 relative mb-2">
+              <label className="text-gray-800 italic mb-1" htmlFor="">
+                Email:
+              </label>
+              <input
+                className="h-7 peer block border border-gray-500 w-[95%] rounded  bg-transparent px-1"
+                type="text"
+              />
+            </div>
+            <div className="w-1/2 relative mb-2">
+              <label className="text-gray-800 italic mb-1" htmlFor="">
+                Show Name:
+              </label>
+              <input
+                className="h-7 peer block border border-gray-500 w-[98%] rounded  bg-transparent px-1"
+                type="text"
+              />
+            </div>
+          </div>
           <div className="flex flex-row justify-between">
             <div>
-              <label className="text-red-800 italic">Comment</label>
+              <label className="text-gray-700 italic">Comment</label>
             </div>
             <div className="justify-end mr-2">
               <button
@@ -59,13 +79,15 @@ function Comment() {
               </button>
             </div>
           </div>
-          <textarea
-            onChange={(e) => setComment(e.target.value)}
-            onKeyDown={handleKeyDown}
-            id="comment_id"
-            className="peer block mt-1  p-2 w-full h-32 max-h-40 rounded border border-red-800"
-            value={comment}
-          ></textarea>
+          <div className="mr-2">
+            <textarea
+              onChange={(e) => setComment(e.target.value)}
+              onKeyDown={handleKeyDown}
+              id="comment_id"
+              className="peer block mt-1 p-2 w-full h-32 max-h-40 rounded border border-gray-500"
+              value={comment}
+            ></textarea>
+          </div>
         </div>
       </div>
 
@@ -80,7 +102,10 @@ function Comment() {
             <div id="id-comment-header" className="ml-5 w-1/4">
               <CommentHeader></CommentHeader>
             </div>
-            <div id="id-posted-in" className="w-3/4 ml-3 flex flex-row justify-end mr-5 italic text-sm">
+            <div
+              id="id-posted-in"
+              className="w-3/4 ml-3 flex flex-row justify-end mr-5 italic text-sm"
+            >
               Posted:
               {postedTimes[postedTimes.length - index - 1]}
             </div>

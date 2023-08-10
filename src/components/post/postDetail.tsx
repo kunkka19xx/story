@@ -55,10 +55,10 @@ function PostDetail() {
             <Content content={post.content}></Content>
           </div>
           <hr className="mt-3" />
-          <div className="">
+          <div className="mt-2">
             <TagGroup tags={post.tags}></TagGroup>
           </div>
-          <div className="mt-3">
+          <div className="mt-1">
             <Comment></Comment>
           </div>
         </div>
