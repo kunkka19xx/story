@@ -12,7 +12,7 @@ function MiniEnd() {
     <section className="font-thin italic h-full">
       <div className="relative h-full grid-rows-2 flex flex-col">
         <div className="row-span-1"></div>
-        <div className="absolute inset-x-0 bottom-0 flex flex-row mt-1 text-sm">
+        <div className="absolute inset-x-0 bottom-0 flex flex-row mt-1 text-smw">
           <p className="mr-1">Created at: {createdDate.toDateString()},</p>
           <p className="mr-1">{duration} minutes to read.</p>
           <button>Tags</button>

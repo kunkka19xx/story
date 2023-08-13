@@ -10,7 +10,7 @@ const MiniContent: React.FC<ContentProps> = ({content})=> {
   const truncateContent = (text: string, length: number) => {
     const words = text.split(" ");
     const truncatedText = words.slice(0, length).join(" ");
-    return truncatedText + (words.length > length ? "..." : "");
+    return truncatedText +  "...";
   };
 
   const setContent = (content : Content[]) => {

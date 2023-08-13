@@ -25,7 +25,7 @@ const MiniPost : React.FC<PostProps> = ({post}) => {
               <MiniEnd />
             </div>
           </div>
-          <div className="w-full lg:w-1/4 aspect-square overflow-hidden rounded-lg h-60">
+          <div className="w-full lg:w-1/4 aspect-square overflow-hidden rounded-lg min-h-60">
             <img
               className="w-full h-full object-cover"
               // style={{ minHeight: "240px" }} // Set your desired fixed height here
