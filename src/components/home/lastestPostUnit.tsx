@@ -24,7 +24,7 @@ const LastestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
               className="w-full"
               alt=""
             />
-            <a href="#!">
+            <a href={"/detail/".concat(post.id.toString())}>
               <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
             </a>
           </div>
@@ -38,7 +38,7 @@ const LastestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
             <CategoryIcon categories={post.categories}></CategoryIcon>
           </div>
           <p className="mb-6 text-sm text-neutral-700">
-            Published <u>{post.createdDate.toDateString()}</u> by&nbsp;
+            Published <u>{post.createdDate}</u> by&nbsp;
             <a href="#!">{post.author}</a>
           </p>
           <p className="mb-6 text-neutral-700">

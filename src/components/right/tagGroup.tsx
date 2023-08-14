@@ -8,7 +8,7 @@ interface TagProps {
 
 const TagGroup: React.FC<TagProps> = ({ tags }) => {
   const router = useRouter();
-  const tag = router.query.tag;
+  const tag = router.query.param;
 
 
   const handleClickTag = (tagValue:string) => {

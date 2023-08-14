@@ -3,7 +3,7 @@ export interface PostContent {
   title: string;
   content: Content[];
   author: string;
-  createdDate: Date;
+  createdDate: string;
   length: number;
   tags:string[];
   categories:string[];
@@ -19,3 +19,14 @@ export interface Author {
   id: string;
   name: string;
 }
+
+export const defaultPost: PostContent = {
+  id: 0,
+  title: '',
+  content: [],
+  author: '',
+  createdDate: '',
+  length: 0,
+  tags: [],
+  categories: [],
+};

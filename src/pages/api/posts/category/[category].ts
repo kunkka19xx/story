@@ -6,7 +6,6 @@ const listPost = LIST_POST;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { category } = req.query;
-  console.log(category)
   var result;
   if (category) result = listPost.filter((e) => e.categories.includes(category.toString()));
   else result = listPost;

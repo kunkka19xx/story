@@ -2,6 +2,11 @@ import Footer from "@/components/footer";
 import { APPLICATION_JSON, METHOD_POST } from "@/constants/headerConstant";
 import Header from "@/components/header";
 import React, { useState } from "react";
+import { PostContent, defaultPost } from "@/model/PostModel";
+
+// interface PostProps {
+//   post: PostContent;
+// }
 
 function CreatePost() {
   const [title, setTitle] = useState("");
@@ -10,18 +15,34 @@ function CreatePost() {
   >([{ id: 1, content: "", img: "" }]);
 
   const [body, setBody] = useState<
-    { id: number; content: string; imageData: string }[]
-  >([{ id: 1, content: "", imageData: "" }]);
+    { id: number; content: string; img: string }[]
+  >([{ id: 1, content: "", img: "" }]);
 
   const [imgList, setImgList] = useState<{ id: number; image: string }[]>([
     { id: 1, image: "" },
   ]);
 
+  const [tags, setTags] = useState([""]);
+
+  const [post, setPost] = useState<PostContent>();
+
   const handleAddContent = () => {
     const newId = contentList.length + 1;
     setContentList([...contentList, { id: newId, content: "", img: "" }]);
     setImgList([...imgList, { id: newId, image: "" }]);
-    setBody([...body, { id: newId, content: "", imageData: "" }]);
+    setBody([...body, { id: newId, content: "", img: "" }]);
+    if (!post) {
+      const newP = {
+        ...defaultPost,
+        id: 1000,
+        title: title,
+        content: body,
+      };
+      setPost(newP);
+    } else {
+      setPost({ ...post, content: body, tags: tags });
+    }
+    console.log(post);
   };
 
   const handleContentChange = (id: number, value: string) => {
@@ -36,6 +57,17 @@ function CreatePost() {
         item.id === id ? { ...item, content: value } : item
       )
     );
+    if (!post) {
+      const newP = {
+        ...defaultPost,
+        id: 1000,
+        title: title,
+        content: body,
+      };
+      setPost(newP);
+    } else {
+      setPost({ ...post, content: body, tags: tags });
+    }
   };
 
   const handleImgChange = (
@@ -57,9 +89,10 @@ function CreatePost() {
 
         setBody((prevBody) =>
           prevBody.map((item) =>
-            item.id === id ? { ...item, imageData: fileContent } : item
+            item.id === id ? { ...item, img: fileContent } : item
           )
         );
+
       } else {
         setImgList((prevImgList) =>
           prevImgList.map((item) =>
@@ -68,11 +101,22 @@ function CreatePost() {
         );
         setBody((prevBody) =>
           prevBody.map((item) =>
-            item.id === id ? { ...item, imageData: fileContent } : item
+            item.id === id ? { ...item, img: fileContent } : item
           )
         );
       }
       reader.readAsDataURL(file);
+      if (!post) {
+        const newP = {
+          ...defaultPost,
+          id: 1000,
+          title: title,
+          content: body,
+        };
+        setPost(newP);
+      } else {
+        setPost({ ...post, content: body, tags: tags });
+      }
     }
   };
 
@@ -96,13 +140,31 @@ function CreatePost() {
     setTitle(title);
   };
 
+  const handleTagChange = (target: string) => {
+    setTags(target.split(","));
+    console.log(tags);
+    if (!post) {
+      const newP = {
+        ...defaultPost,
+        id: 1000,
+        title: title,
+        content: body,
+      };
+      setPost(newP);
+    } else {
+      setPost({ ...post, content: body, tags: tags });
+    }
+  };
+
   return (
     <section className="min-h-screen flex flex-col">
       <div className="z-50 pb-16">
         <Header></Header>
       </div>
       <div id="id-create-post" className="flex-grow wrap-on-small-screen">
-        <div id="id-create-post-child" className="flex h-full"> {/*flex-wrap*/}
+        <div id="id-create-post-child" className="flex h-full">
+          {" "}
+          {/*flex-wrap*/}
           <div
             id="id-create-part"
             className="w-1/2 h-full border-r mt-2 mb-2 wrap-on-small-screen"
@@ -115,12 +177,21 @@ function CreatePost() {
 
             <div className="flex flex-col">
               <label className="mb-1 ml-1">Title</label>
-              <textarea
+              <input
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 placeholder="Write your post's title!"
                 className="ml-3 mr-3 mb-3 border rounded-md h-10"
-              ></textarea>
+              ></input>
+
+              <label className="mb-1 ml-1">Tags</label>
+              <input
+                onChange={(e) => handleTagChange(e.target.value)}
+                value={tags}
+                placeholder="List your post's Tags. Separate by comma: ,"
+                className="ml-3 mr-3 mb-3 border rounded-md h-10"
+              ></input>
+
               <ol>
                 {contentList.map((item) => (
                   <li key={item.id} className="flex flex-col">

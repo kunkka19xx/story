@@ -11,6 +11,16 @@
     display: block;
     visibility: visible;
   }
+
+  #id-mini-end{
+    display: block;
+    visibility: visible;
+    font-size: small;
+  }
+
+  #id-tag-mini-end{
+    visibility: hidden;
+  }
 }
 
 @media (min-width:976px) {
@@ -18,3 +28,4 @@
         display: none;
     }
 }
+

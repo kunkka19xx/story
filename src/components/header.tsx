@@ -85,7 +85,7 @@ function Header() {
               </a>
             </div>
           </div>
-          <div id="id-search-box" className="relative w-96 ml-auto mr-5">
+          <div id="id-search-box" className="relative w-96 ml-auto mr-5 opacity-80">
             <form action="" className="flex h-full">
               <input
                 type="text"

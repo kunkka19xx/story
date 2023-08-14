@@ -1,25 +1,52 @@
+import { PostContent } from "@/model/PostModel";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-function MiniEnd() {
-  const [duration, setDuration] = useState(10);
-  const [createdDate, setCreatedDate] = useState(new Date());
+interface PostProps {
+  post: PostContent;
+}
 
-  const calDuration = () => {
-    setDuration(10);
+const MiniEnd: React.FC<PostProps> = ({ post }) => {
+  const router = useRouter();
+  const tag = router.query.param;
+
+  const handleClickTag = (tag: string) => {
+    if (!tag) return;
+    router.push("/posts/".concat(tag));
   };
 
   return (
-    <section className="font-thin italic h-full">
+    <section id="id-mini-end" className="font-thin italic h-full">
       <div className="relative h-full grid-rows-2 flex flex-col">
         <div className="row-span-1"></div>
         <div className="absolute inset-x-0 bottom-0 flex flex-row mt-1 text-smw">
-          <p className="mr-1">Created at: {createdDate.toDateString()},</p>
-          <p className="mr-1">{duration} minutes to read.</p>
-          <button>Tags</button>
+          <p className="mr-1" suppressHydrationWarning>
+            Created at:{" "}
+            {post.createdDate.toLocaleString()}
+            ,
+          </p>
+          <p className="mr-1">{post.length} minutes to read.</p>
+
+          {post.tags.map((_, index) => {
+            if (index < 3)
+              return (
+                <button
+                  onClick={() => {
+                    handleClickTag(post.tags[index]);
+                  }}
+                  key={index}
+                  id="id-tag-mini-end"
+                  className="text-sky-700 hover:text-rose-600 hover:italic"
+                >
+                  {post.tags[index].concat(",")}&nbsp;
+                </button>
+              );
+            else return null;
+          })}
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default MiniEnd;

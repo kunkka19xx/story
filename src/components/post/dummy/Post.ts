@@ -17,10 +17,10 @@ export var POST = {
     },
   ],
   author: "Kunkka",
-  createdDate: new Date("2023-01-01 12:12:12"),
+  createdDate: "2023-01-01 12:12:12",
   length: 6,
-  tags:["technical", "java", "ai", "deep learning"],
-  categories:["story","tech","service"],
+  tags: ["technical", "ai", "deep learning"],
+  categories: ["story", "tech", "service"],
 };
 
 export var LIST_POST = [
@@ -30,17 +30,15 @@ export var LIST_POST = [
     content: [
       {
         id: 1,
-        content:
-          
-          " \n se bi thua",
+        content: " \n se bi thua",
         img: "blob:http://localhost:3000/813916b9-0e15-496a-978d-ff6751b01439",
       },
     ],
     author: "Kunkka",
-    createdDate: new Date("2023-01-01 12:12:12"),
+    createdDate: "2023-01-01 12:12:12",
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"],
-    categories:["story","tech","service"],
+    tags: ["technical", "java", "ai", "deep learning"],
+    categories: ["story", "tech", "service"],
   },
   {
     id: 2,
@@ -49,22 +47,22 @@ export var LIST_POST = [
       {
         id: 1,
         content:
-        "Chung ta dang noi ve van menh cua quoc gia. " +
-        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
-        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
-        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
-        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
-        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
-        " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
-        " \n se bi thua",
+          "Chung ta dang noi ve van menh cua quoc gia. " +
+          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+          " \n Ban co bi dien khong khi nghi nhu vay. Chung ta co the" +
+          " \n se bi thua",
         img: "blob:http://localhost:3000/813916b9-0e15-496a-978d-ff6751b01439",
       },
     ],
     author: "Kunkka",
-    createdDate: new Date("2023-01-01 12:12:12"),
+    createdDate: "2023-01-01 12:12:12",
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"],
-    categories:["story","tech","service"],
+    tags: ["technical", "ai", "deep learning"],
+    categories: ["story", "tech", "service"],
   },
   {
     id: 3,
@@ -80,10 +78,10 @@ export var LIST_POST = [
       },
     ],
     author: "Kunkka",
-    createdDate: new Date("2023-01-01 12:12:12"),
+    createdDate: "2023-01-01 12:12:12",
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"],
-    categories:["tech","service"],
+    tags: ["java", "ai", "deep learning"],
+    categories: ["tech", "service"],
   },
   {
     id: 4,
@@ -99,10 +97,10 @@ export var LIST_POST = [
       },
     ],
     author: "Kunkka",
-    createdDate: new Date("2023-01-01 12:12:12"),
+    createdDate: "2023-01-01 12:12:12",
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"],
-    categories:["story","service"],
+    tags: ["technical", "java",],
+    categories: ["story", "service"],
   },
   {
     id: 5,
@@ -118,10 +116,10 @@ export var LIST_POST = [
       },
     ],
     author: "Kunkka",
-    createdDate: new Date("2023-01-01 12:12:12"),
+    createdDate: "2023-01-01 12:12:12",
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"],
-    categories:["story","tech","service"],
+    tags: ["technical", "java", "ai"],
+    categories: ["story", "tech", "service"],
   },
   {
     id: 6,
@@ -137,10 +135,10 @@ export var LIST_POST = [
       },
     ],
     author: "Kunkka",
-    createdDate: new Date("2023-01-01 12:12:12"),
+    createdDate: "2023-01-01 12:12:12",
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"],
-    categories:["story","tech","service"],
+    tags: ["technical", "java", "ai", "deep learning"],
+    categories: ["story", "tech", "service"],
   },
   {
     id: 7,
@@ -156,10 +154,10 @@ export var LIST_POST = [
       },
     ],
     author: "Kunkka",
-    createdDate: new Date("2023-01-01 12:12:12"),
+    createdDate: "2023-01-01 12:12:12",
     length: 6,
-    tags:["technical", "java", "ai", "deep learning"],
-    categories:["service"],
+    tags: ["technical", "java", "ai", "deep learning"],
+    categories: ["service"],
   },
   {
     id: 8,
@@ -175,9 +173,9 @@ export var LIST_POST = [
       },
     ],
     author: "Kunkka",
-    createdDate: new Date("2023-01-01 12:12:12"),
+    createdDate: "2023-01-01 12:12:12",
     length: 6,
-    tags:["dog"],
-    categories:["story","tech",],
+    tags: ["dog"],
+    categories: ["story", "tech"],
   },
 ];

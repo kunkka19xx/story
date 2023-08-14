@@ -22,7 +22,7 @@ const MiniPost : React.FC<PostProps> = ({post}) => {
               <MiniContent content={post.content} />
             </div>
             <div className="flex-grow justify-end">
-              <MiniEnd />
+              <MiniEnd post={post} />
             </div>
           </div>
           <div className="w-full lg:w-1/4 aspect-square overflow-hidden rounded-lg min-h-60">

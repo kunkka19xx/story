@@ -45,6 +45,22 @@ function ListPost() {
         <Header></Header>
       </div>
       <div className="flex flex-row flex-grow">
+        <div className="lg:w-1/6"></div>
+        <div className="text-center lg:w-1/2 pl-2 pr-2 pb-2 flex flex-col">
+          <h3 className="text-yellow-900 font-semibold uppercase text-xl mb-2 mt-2">
+            #TAG:{" "}
+            <a
+              className="text-sky-600 hover:text-rose-700 hover:italic"
+              href={"/posts/".concat(tag ? tag.toString() : "")}
+            >
+              {tag}
+            </a>
+          </h3>
+        </div>
+
+        <div className="lg:w-1/3  hidden lg:block"></div>
+      </div>
+      <div className="flex flex-row flex-grow">
         <div className="lg:w-1/6 border-r border-gray-400"></div>
         {/* <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2"> */}
         <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
