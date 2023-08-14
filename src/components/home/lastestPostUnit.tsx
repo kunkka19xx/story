@@ -32,7 +32,9 @@ const LastestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
 
         <div className="w-full shrink-0 grow-0 basis-auto lg:w-6/12 lg:pl-6">
           <a href={"/detail/".concat(post.id.toString())}>
-            <h3 className="mb-4 text-2xl font-bold">{post.title}</h3>
+            <h3 className=" hover:first-letter:text-red-600 hover:text-3xl mb-4 text-2xl font-bold">
+              {post.title}
+            </h3>
           </a>
           <div className="mb-4 flex items-center text-sm font-medium text-danger ">
             <CategoryIcon categories={post.categories}></CategoryIcon>

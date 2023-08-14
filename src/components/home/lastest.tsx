@@ -10,7 +10,7 @@ const Latest = () => {
   return (
     <div className="container mt-12 mx-auto md:px-6">
       <section className="mb-32">
-        <h2 className="mb-16 text-center text-2xl font-bold">
+        <h2 className="mb-16 text-center text-3xl font-bold">
           Latest articles
         </h2>
 

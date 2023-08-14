@@ -3,6 +3,7 @@ import { APPLICATION_JSON, METHOD_POST } from "@/constants/headerConstant";
 import Header from "@/components/header";
 import React, { useState } from "react";
 import { PostContent, defaultPost } from "@/model/PostModel";
+import { CATEGORIES } from "@/constants/categoryConstant";
 
 // interface PostProps {
 //   post: PostContent;
@@ -22,6 +23,7 @@ function CreatePost() {
     { id: 1, image: "" },
   ]);
 
+  const [categories, setCategories] = useState<string[]>([]);
   const [tags, setTags] = useState([""]);
 
   const [post, setPost] = useState<PostContent>();
@@ -42,7 +44,6 @@ function CreatePost() {
     } else {
       setPost({ ...post, content: body, tags: tags });
     }
-    console.log(post);
   };
 
   const handleContentChange = (id: number, value: string) => {
@@ -92,7 +93,6 @@ function CreatePost() {
             item.id === id ? { ...item, img: fileContent } : item
           )
         );
-
       } else {
         setImgList((prevImgList) =>
           prevImgList.map((item) =>
@@ -120,29 +120,28 @@ function CreatePost() {
     }
   };
 
-  const handleAddImage = () => {};
+  const handleCheckboxChange = (value: string) => {
+    if (categories.includes(value)) {
+      setCategories(categories.filter((item) => item !== value));
+    } else {
+      setCategories([...categories, value]);
+    }
 
-  // handle post
-  // call post api
-  const handlePost = async () => {
-    const response = await fetch("api/post", {
-      method: METHOD_POST,
-      body: JSON.stringify({ title, body }),
-      headers: {
-        "Content-Type": APPLICATION_JSON,
-      },
-    });
-    const data = await response.json();
-  };
-
-  const hanldeTitleChange = () => {
-    if (!title) return;
-    setTitle(title);
+    if (!post) {
+      const newP = {
+        ...defaultPost,
+        id: 1000,
+        title: title,
+        content: body,
+      };
+      setPost(newP);
+    } else {
+      setPost({ ...post, categories: categories });
+    }
   };
 
   const handleTagChange = (target: string) => {
     setTags(target.split(","));
-    console.log(tags);
     if (!post) {
       const newP = {
         ...defaultPost,
@@ -154,6 +153,26 @@ function CreatePost() {
     } else {
       setPost({ ...post, content: body, tags: tags });
     }
+  };
+
+  const handleAddImage = () => {};
+
+  const hanldeTitleChange = () => {
+    if (!title) return;
+    setTitle(title);
+  };
+
+  // handle post
+  // call post api
+  const handlePost = async () => {
+    const response = await fetch("api/post", {
+      method: METHOD_POST,
+      body: JSON.stringify({ post }),
+      headers: {
+        "Content-Type": APPLICATION_JSON,
+      },
+    });
+    const data = await response.json();
   };
 
   return (
@@ -174,17 +193,44 @@ function CreatePost() {
                 Let write some thing!
               </h2>
             </div>
-
+            {/* title */}
             <div className="flex flex-col">
-              <label className="mb-1 ml-1">Title</label>
+              <label className="mb-1 ml-1 font-semibold">Title:</label>
               <input
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 placeholder="Write your post's title!"
                 className="ml-3 mr-3 mb-3 border rounded-md h-10"
               ></input>
-
-              <label className="mb-1 ml-1">Tags</label>
+              {/* category */}
+              <div className="flex">
+                <div>
+                  <label className="mb-1 ml-1 font-semibold">Categories:</label>
+                </div>
+                {CATEGORIES.map((_, index) => (
+                  <div
+                    key={index}
+                    className="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]"
+                  >
+                    <input
+                      className="relative float-left  mr-[6px] mt-[0.15rem] h-[1.125rem] w-[1.125rem]  rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 outline-none hover:outline-orange-300"
+                      type="checkbox"
+                      value=""
+                      checked={categories.includes(CATEGORIES[index])}
+                      onChange={() => handleCheckboxChange(CATEGORIES[index])}
+                      id={"checkbox" + index}
+                    />
+                    <label
+                      htmlFor={"checkbox" + index}
+                      className="inline-block pl-[0.15rem] hover:cursor-pointer uppercase"
+                    >
+                      {CATEGORIES[index]}
+                    </label>
+                  </div>
+                ))}
+              </div>
+              {/* tags */}
+              <label className="mb-1 ml-1 font-semibold">Tags:</label>
               <input
                 onChange={(e) => handleTagChange(e.target.value)}
                 value={tags}
