@@ -119,7 +119,7 @@ function Contact() {
               ></textarea>
             </div>
 
-            <div className="mt-auto">
+            <div className="flex justify-center">
               <button
                 className="w-full items-center border from-sky-500 to-sky-200 bg-gradient-to-r opacity-80
               hover:bg-gradient-to-r hover:from-indigo-400 hover:opacity-75 hover:text-lg hover:text-slate-800
