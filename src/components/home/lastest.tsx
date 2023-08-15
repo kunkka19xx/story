@@ -8,8 +8,8 @@ const Latest = () => {
   const post = POST;
   const listPost = LIST_POST;
   return (
-    <div className="container mt-12 mx-auto md:px-6">
-      <section className="mb-32">
+    <div className="container mt-5 mx-auto md:px-6">
+      <section className="mb-24">
         <h2 className="mb-16 text-center text-3xl font-bold">
           Latest articles
         </h2>
@@ -21,6 +21,7 @@ const Latest = () => {
             idx={index}
           ></LastestPostUnit>
         ))}
+        
       </section>
     </div>
   );
