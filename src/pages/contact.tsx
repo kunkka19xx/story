@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import React from "react";
 
@@ -14,15 +15,15 @@ function Contact() {
     workingHours: "Monday to Friday: 9 AM - 5 PM",
   };
   return (
-    <section>
+    <section className="">
       <div className="z-0 pb-16">
         <Header></Header>
       </div>
       <div className="flex flex-col lg:flex-row">
-        <div className="flex justify-center w-full lg:w-1/2  mr-1 mt-2 lg:mt-10">
-          <div className="w-11/12 items-center bg-neutral-100">
-            <h2 className="text-xl font-bold mb-2">Social Media</h2>
-            <ul className="ml-1">
+        <div className="lg:flex-grow flex justify-center w-full lg:w-1/2  mr-1 mt-2 lg:mt-10">
+          <div className="w-11/12 items-center bg-gradient-to-l from-stone-100 to-rose-50 rounded-lg">
+            <h2 className="ml-1 text-xl font-bold mb-2">Social Media</h2>
+            <ul className="ml-2">
               {contactInfo.socialMedia.map((platform) => (
                 <li key={platform.name}>
                   <a
@@ -53,15 +54,15 @@ function Contact() {
               ))}
             </ul>
 
-            <h2 className="text-xl font-bold my-2">Contact Information</h2>
-            <div className="ml-1">
+            <h2 className="text-xl font-bold ml-1 my-2">Contact Information</h2>
+            <div className="ml-2">
               <p className="mb-1">Phone: {contactInfo.phoneNumber}</p>
               <p className="mb-1">Email: {contactInfo.email}</p>
               <p className="mb-1">Address: {contactInfo.address}</p>
               <p className="mb-1">Working Hours: {contactInfo.workingHours}</p>
             </div>
             <div className="block border-stone-300 border my-2 mx-2 shrink-0 grow-0 basis-auto">
-              <div className="h-[500px] w-full">
+              <div className="h-[400px] w-full">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7477988419855!2d139.74285797642224!3d35.65858483121661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bbd9009ec09%3A0x481a93f0d2a409dd!2sTokyo%20Tower!5e0!3m2!1sen!2sus!4v1692022241532!5m2!1sen!2sus"
                   className="left-0 top-0 h-full w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg"
@@ -72,9 +73,9 @@ function Contact() {
           </div>
         </div>
         <div className="w-full lg:w-1/2 ml-1 mr-2 mt-10 mx-auto flex justify-center">
-          <div className="w-11/12 items-center bg-neutral-100">
+          <div className="w-11/12 items-center bg-gradient-to-r from-stone-100 to-rose-50 rounded-lg">
             <div>
-              <h2 className="text-xl font-bold mb-2">Contact</h2>
+              <h2 className="ml-1 mb-3 text-xl font-bold">Send us your message</h2>
             </div>
             <div className="flex flex-col">
               <label htmlFor="email" className="ml-1 mb-1 font-semibold">
@@ -119,9 +120,9 @@ function Contact() {
               ></textarea>
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-4">
               <button
-                className="w-full items-center border from-sky-500 to-sky-200 bg-gradient-to-r opacity-80
+                className="w-full items-center border from-sky-600 to-sky-200 bg-gradient-to-r opacity-80
               hover:bg-gradient-to-r hover:from-indigo-400 hover:opacity-75 hover:text-lg hover:text-slate-800
                border-black rounded-md ml-2 mr-2 h-8 font-semibold"
               >
@@ -130,6 +131,10 @@ function Contact() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="mt-14">
+        <Footer></Footer>
       </div>
     </section>
   );
