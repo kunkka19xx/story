@@ -44,7 +44,7 @@ function ListPost() {
       <div className="z-50 pb-16">
         <Header></Header>
       </div>
-      <div className="flex flex-row flex-grow">
+      <div className="flex flex-row">
         <div className="lg:w-1/6"></div>
         <div className="text-center lg:w-1/2 pl-2 pr-2 pb-2 flex flex-col">
           <h3 className="text-yellow-900 font-semibold uppercase text-xl mb-2 mt-2">
