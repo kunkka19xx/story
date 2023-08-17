@@ -1,4 +1,3 @@
-import { faL } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
 function Header() {
