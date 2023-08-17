@@ -65,7 +65,7 @@ function AboutMe() {
                 src={images[index]}
                 alt=""
               />
-              <div className="lg:absolute top-0 p-6 lg:bg-none bg-slate-600 bg-opacity-60">
+              <div className="lg:absolute top-0 p-6 lg:bg-none bg-zinc-800 bg-opacity-80">
                 <h5 className="text-left mb-2 lg:mb-10 text-xl font-medium leading-tight text-white">
                   About me:{" "}
                   <small className="text-zinc-300 italic"> 1.{index + 1}</small>
