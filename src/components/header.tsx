@@ -10,14 +10,12 @@ function Header() {
     }
   };
 
-  const handleSearchButton = () => {
-
-  };
+  const handleSearchButton = () => {};
 
   return (
     <header className="fixed top-0 z-50 w-full">
       <nav>
-        <div className="h-14 flex  justify-items-center items-center bg-gradient-to-r from-indigo-400 bg-opacity-100">
+        <div className="h-12 lg:h-14 flex  justify-items-center items-center bg-gradient-to-r from-indigo-400 bg-opacity-100">
           {/* header bar */}
           <button
             id="id-toggle-button"
@@ -84,7 +82,10 @@ function Header() {
               </a>
             </div>
           </div>
-          <div id="id-search-box" className="relative w-96 ml-auto mr-5 opacity-80">
+          <div
+            id="id-search-box"
+            className="relative w-96 ml-auto lg:mr-5 mr-2 opacity-80"
+          >
             <form action="" className="flex h-full">
               <input
                 type="text"
