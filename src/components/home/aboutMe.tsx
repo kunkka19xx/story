@@ -61,7 +61,7 @@ function AboutMe() {
             <div key={index} className="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <img
                 id="id-img-about"
-                className="rounded-lg lg:h-120 h-auto opacity-70 object-cover"
+                className="rounded-lg lg:h-120 h-auto opacity-90 object-cover"
                 src={images[index]}
                 alt=""
               />
