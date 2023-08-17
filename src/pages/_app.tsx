@@ -4,6 +4,8 @@ import "@/styles/hide.css";
 import "@/styles/text.css";
 import "@/styles/wrap.css";
 import "@/styles/show.css";
+import "@/styles/height.css";
+
 
 import Head from "next/head";
 

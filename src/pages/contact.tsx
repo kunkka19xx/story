@@ -5,13 +5,13 @@ import React from "react";
 function Contact() {
   const contactInfo = {
     socialMedia: [
-      { name: "Facebook", link: "https://www.facebook.com/example" },
+      { name: "Facebook", link: "https://www.facebook.com/CodingByNoah/" },
       { name: "Twitter", link: "https://twitter.com/example" },
       // Add more social media links as needed
     ],
-    phoneNumber: "+1 (555) 123-4567",
-    email: "contact@example.com",
-    address: "123 Main Street, City, Country",
+    phoneNumber: "+81 (709)-(9026)-(5396)",
+    email: "nobita079x@gmail.com",
+    address: "Okinawa - Naha - Sobe",
     workingHours: "Monday to Friday: 9 AM - 5 PM",
   };
   return (

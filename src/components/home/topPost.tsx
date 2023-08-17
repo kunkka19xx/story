@@ -50,6 +50,7 @@ const TopPost: React.FC<CarouselProps> = ({ images, captions }) => {
         autoPlay={true}
         autoFocus
         showStatus={false}
+        showThumbs={false}
         // renderArrowNext={customNextArrow}
         // renderArrowPrev={customPrevArrow}
       >

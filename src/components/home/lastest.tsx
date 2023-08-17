@@ -9,7 +9,7 @@ const Latest = () => {
   const listPost = LIST_POST;
   return (
     <div className="container mt-5 mx-auto md:px-6">
-      <section className="mb-24">
+      <section className="mb-6">
         <h2 className="mb-16 text-center text-3xl font-bold">
           Latest articles
         </h2>

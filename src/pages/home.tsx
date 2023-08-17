@@ -1,64 +1,40 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import MiniPost from "@/components/mini-post/miniPost";
-import Paging from "@/components/paging";
-import { LIST_POST } from "@/components/post/dummy/Post";
-import OutStanding from "@/components/right/outStanding";
-import TagGroup from "@/components/right/tagGroup";
-import React from "react";
+import AboutMe from "@/components/home/aboutMe";
+import Latest from "@/components/home/lastest";
+import TopPost from "@/components/home/topPost";
+import React, { useEffect } from "react";
 
 function Home() {
-  const miniPostData = LIST_POST;
+  useEffect(() => {
+    const focusTarget = document.getElementById("id-header");
+    if (focusTarget) {
+      focusTarget.focus();
+    }
+  }, []);
 
+  const img = [
+    "/assets/services/custiomize service.png",
+    "/assets/services/Custom-Software-Development.jpeg",
+    "/assets/services/migration.jpeg",
+  ];
+  const captions = ["Ban co thich bai viet nay khong", "Ban khong thich no a"];
   return (
-    <section className="min-h-screen flex flex-col ">
-      <div className="z-50 pb-16">
-        <Header></Header>
-      </div>
-      <div className="flex flex-row flex-grow">
-        <div className="lg:w-1/6 border-r border-gray-400"></div>
-        {/* <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2"> */}
-        <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
-          <div>
-            {miniPostData.map((_, index) => (
-              <MiniPost key={index} post={miniPostData[index]} />
-            ))}
-          </div>
-          <div className="mt-2">
-            <Paging></Paging>
-          </div>
+    <>
+      <section className="min-h-screen flex flex-col bg-gradient-to-r from-zinc-100 to-stone-50 bg-opacity-95">
+        <div id="id-header" className="z-50 pb-16">
+          <Header></Header>
         </div>
-
-        <div className="lg:w-1/3 border-l border-gray-400 hidden lg:block">
-          <div className="fixed">
-            <div id="out-standing-title" className="ml-2 mt-2 mb-1 text-center">
-              <h3 className="font-semibold font-sans ">Most impressive post</h3>
-            </div>
-
-            <div className="flex">
-              <div className="w-1/6"></div>
-              <div id="out-standing-post" className="w-3/4">
-                <OutStanding />
-              </div>
-            </div>
-            <hr className="mt-4" />
-            <div id="tag-title" className="ml-2 mt-3 mb-2 text-center">
-              <h3 className="font-semibold font-sans ">
-                Discover more of what matters to you
-              </h3>
-            </div>
-
-            <div id="may-you-like-tag" className="flex">
-              <div className="w-1/6"></div>
-              <div className="w-3/4">
-                <TagGroup tags={["dog"]}></TagGroup>
-              </div>
-            </div>
-          </div>
+          <TopPost images={img} captions={captions}></TopPost>
+        <div className="">
+          <Latest></Latest>
         </div>
-      </div>
-      <Footer></Footer>
-    </section>
+        <hr className="mb-2 mx-3" />
+        <AboutMe></AboutMe>
+
+        <Footer></Footer>
+      </section>
+    </>
   );
 }
 
