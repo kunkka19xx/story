@@ -15,9 +15,9 @@ function Service() {
               Our Provided Services
             </h2>
 
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="grid gap-6 px-3 lg:px-2 lg:grid-cols-3">
               <div
-                className="hover:transform hover:scale-110 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
+                className="hover:transform hover:scale-105 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
                 data-te-ripple-init
                 data-te-ripple-color="dark"
               >
@@ -43,7 +43,7 @@ function Service() {
               </div>
 
               <div
-                className="hover:transform hover:scale-110 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
+                className="hover:transform hover:scale-105 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
                 data-te-ripple-init
                 data-te-ripple-color="dark"
               >
@@ -69,7 +69,7 @@ function Service() {
               </div>
 
               <div
-                className="hover:transform hover:scale-110 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
+                className="hover:transform hover:scale-105 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
                 data-te-ripple-init
                 data-te-ripple-color="dark"
               >
@@ -95,7 +95,7 @@ function Service() {
               </div>
 
               <div
-                className="hover:transform hover:scale-110 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
+                className="hover:transform hover:scale-105 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
                 data-te-ripple-init
                 data-te-ripple-color="dark"
               >
@@ -121,7 +121,7 @@ function Service() {
               </div>
 
               <div
-                className="hover:transform hover:scale-110 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
+                className="hover:transform hover:scale-105 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
                 data-te-ripple-init
                 data-te-ripple-color="dark"
               >
@@ -147,7 +147,7 @@ function Service() {
               </div>
 
               <div
-                className="hover:transform hover:scale-110 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
+                className="hover:transform hover:scale-105 zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%]"
                 data-te-ripple-init
                 data-te-ripple-color="dark"
               >

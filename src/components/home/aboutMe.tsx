@@ -29,7 +29,7 @@ function AboutMe() {
             </p>
           </div>
           <div>
-            <p className="lg:mt-2 lg:ml-0 ml-1 text-xs font-thin lg:font-normal lg:text-base">
+            <p className="lg:mt-2 lg:ml-0 ml-1 text-xs font-light lg:font-normal lg:text-base">
               Xin chào. Tôi là <b className="text-red-700">Kunkka</b>. Nếu bạn
               là một game thủ thời 2006 thì chắc cũng biết. Kunkka là tên của 1
               hero trong tựa game Warcraft.
@@ -44,7 +44,7 @@ function AboutMe() {
         </div>
       </section>
 
-      <section id="id-detail-info" className="w-full lg:w-2/3">
+      <section id="id-detail-info" className="w-full lg:w-2/3 lg:mt-0 mt-2">
         <Carousel
           axis="horizontal"
           infiniteLoop
@@ -65,7 +65,7 @@ function AboutMe() {
                 src={images[index]}
                 alt=""
               />
-              <div className="lg:absolute top-0 p-6 lg:bg-none bg-zinc-800 bg-opacity-90">
+              <div className="lg:absolute bottom-8 p-6 lg:bg-zinc-50 lg:bg-opacity-0 bg-zinc-800 bg-opacity-90">
                 <h5 className="text-left mb-2 lg:mb-10 text-xl font-medium leading-tight text-white">
                   About me:{" "}
                   <small className="text-zinc-300 italic"> 1.{index + 1}</small>

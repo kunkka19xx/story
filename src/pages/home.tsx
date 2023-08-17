@@ -29,7 +29,7 @@ function Home() {
         <div className="">
           <Latest></Latest>
         </div>
-        <hr className="mb-2 mx-3" />
+        <hr className="mb-3 mx-3" />
         <AboutMe></AboutMe>
 
         <Footer></Footer>
