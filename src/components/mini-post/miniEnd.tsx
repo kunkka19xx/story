@@ -36,7 +36,7 @@ const MiniEnd: React.FC<PostProps> = ({ post }) => {
                   }}
                   key={index}
                   id="id-tag-mini-end"
-                  className="text-sky-700 hover:text-rose-600 hover:italic"
+                  className="text-sky-700 hover:text-rose-600 hover:italic sm:block hidden"
                 >
                   {post.tags[index].concat(",")}&nbsp;
                 </button>

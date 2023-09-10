@@ -18,9 +18,9 @@
     font-size: small;
   }
 
-  #id-tag-mini-end{
+  /* #id-tag-mini-end{
     visibility: hidden;
-  }
+  } */
 }
 
 @media (min-width:976px) {
