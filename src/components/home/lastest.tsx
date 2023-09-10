@@ -5,8 +5,7 @@ import { LIST_POST, POST } from "../post/dummy/Post";
 import LastestPostUnit from "./lastestPostUnit";
 
 const Latest = () => {
-  const post = POST;
-  const listPost = LIST_POST;
+  const listPost = LIST_POST.slice(0,5);
   return (
     <div className="container mt-5 mx-auto md:px-6">
       <section className="mb-6">

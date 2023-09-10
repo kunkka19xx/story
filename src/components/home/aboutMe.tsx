@@ -21,10 +21,10 @@ function AboutMe() {
               className="mb-1 lg:mb-4 w-44 rounded-full lg:rounded-2xl "
               alt="Avatar"
             />
-            <h5 className="lg:mb-2 mb-1 lg:text-xl text-sm font-medium leading-tight">
+            <h5 className="lg:mb-2 mb-1 text-center lg:text-justify lg:text-xl text-sm font-medium leading-tight">
               Kunkka
             </h5>
-            <p className=" text-neutral-500 dark:text-neutral-400 lg:text-xl text-sm">
+            <p className=" text-neutral-500 text-center lg:text-justify dark:text-neutral-400 lg:text-xl text-sm">
               Application Developer
             </p>
           </div>
@@ -58,19 +58,19 @@ function AboutMe() {
           interval={36000}
         >
           {images.map((_, index) => (
-            <div key={index} className="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div key={index} className="h-full relative block rounded-lg lg:bg-zinc-50 lg:bg-opacity-0 bg-zinc-800 bg-opacity-90">
               <img
                 id="id-img-about"
                 className="rounded-lg lg:h-120 h-auto opacity-90 object-cover"
                 src={images[index]}
                 alt=""
               />
-              <div className="lg:absolute bottom-8 p-6 lg:bg-zinc-50 lg:bg-opacity-0 bg-zinc-800 bg-opacity-90">
+              <div className="lg:h-120 h-auto lg:absolute bottom-8 p-8 rounded-lg">
                 <h5 className="text-left mb-2 lg:mb-10 text-xl font-medium leading-tight text-white">
                   About me:{" "}
                   <small className="text-zinc-300 italic"> 1.{index + 1}</small>
                 </h5>
-                <p className="text-left mb-4 lg:text-base lg:font-normal font-thin text-xs text-white bg-none bg-opacity-100 lg:bg-black lg:bg-opacity-20">
+                <p className=" rounded-sm text-left mb-4 lg:text-base lg:font-normal font-thin text-xs text-white bg-none bg-opacity-100 lg:bg-black lg:bg-opacity-20">
                   {paragraph[index]}
                 </p>
                 <p className="text-base text-white text-right mr-2">
