@@ -12,12 +12,12 @@ import { CATEGORIES } from "@/constants/categoryConstant";
 function CreatePost() {
   const [title, setTitle] = useState("");
   const [contentList, setContentList] = useState<
-    { id: number; content: string; img: string }[]
-  >([{ id: 1, content: "", img: "" }]);
+    { id: number; content: string; image: string }[]
+  >([{ id: 1, content: "", image: "" }]);
 
   const [body, setBody] = useState<
-    { id: number; content: string; img: string }[]
-  >([{ id: 1, content: "", img: "" }]);
+    { id: number; content: string; image: string }[]
+  >([{ id: 1, content: "", image: "" }]);
 
   const [imgList, setImgList] = useState<{ id: number; image: string }[]>([
     { id: 1, image: "" },
@@ -30,9 +30,9 @@ function CreatePost() {
 
   const handleAddContent = () => {
     const newId = contentList.length + 1;
-    setContentList([...contentList, { id: newId, content: "", img: "" }]);
+    setContentList([...contentList, { id: newId, content: "", image: "" }]);
     setImgList([...imgList, { id: newId, image: "" }]);
-    setBody([...body, { id: newId, content: "", img: "" }]);
+    setBody([...body, { id: newId, content: "", image: "" }]);
     if (!post) {
       const newP = {
         ...defaultPost,
@@ -73,9 +73,9 @@ function CreatePost() {
 
   const handleImgChange = (
     id: number,
-    img: React.ChangeEvent<HTMLInputElement>
+    image: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const file = img.target.files && img.target.files[0];
+    const file = image.target.files && image.target.files[0];
     if (file) {
       const fileContent = URL.createObjectURL(file);
       const reader = new FileReader();
@@ -90,7 +90,7 @@ function CreatePost() {
 
         setBody((prevBody) =>
           prevBody.map((item) =>
-            item.id === id ? { ...item, img: fileContent } : item
+            item.id === id ? { ...item, image: fileContent } : item
           )
         );
       } else {
@@ -101,7 +101,7 @@ function CreatePost() {
         );
         setBody((prevBody) =>
           prevBody.map((item) =>
-            item.id === id ? { ...item, img: fileContent } : item
+            item.id === id ? { ...item, image: fileContent } : item
           )
         );
       }
@@ -257,7 +257,7 @@ function CreatePost() {
                       <input
                         id="id-input-image"
                         onClick={handleAddImage}
-                        value={item.img || undefined}
+                        value={item.image || undefined}
                         onChange={(e) => handleImgChange(item.id, e)}
                         className=" float-right bg-zinc-200 mr-3 text-sm  w-1/2 mb-1 rounded  hover:bg-purple-300 hover:italic hover:text-black"
                         type="file"

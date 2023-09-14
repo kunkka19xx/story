@@ -3,16 +3,17 @@ export interface PostContent {
   title: string;
   content: Content[];
   author: string;
-  createdDate: string;
+  createdAt: string;
   length: number;
   tags:string[];
   categories:string[];
+  miniContent: string;
 }
 
 export interface Content {
   id: number;
   content: string;
-  img: string;
+  image: string;
 }
 
 export interface Author {
@@ -25,7 +26,8 @@ export const defaultPost: PostContent = {
   title: '',
   content: [],
   author: '',
-  createdDate: '',
+  miniContent: '',
+  createdAt: '',
   length: 0,
   tags: [],
   categories: [],

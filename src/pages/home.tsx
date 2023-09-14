@@ -1,7 +1,7 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import AboutMe from "@/components/home/aboutMe";
-import Latest from "@/components/home/lastest";
+import Latest from "@/components/home/latest";
 import TopPost from "@/components/home/topPost";
 import React, { useEffect } from "react";
 

@@ -7,6 +7,7 @@ import Footer from "../footer";
 import { useRouter } from "next/router";
 import { PostContent } from "@/model/PostModel";
 import TagGroup from "../right/tagGroup";
+import { SERVER_PATH_LOCAL } from "@/constants/server";
 
 function PostDetail() {
   const [post, setPost] = useState<PostContent | null>(null);
@@ -21,7 +22,9 @@ function PostDetail() {
 
   async function fetchPostDetails() {
     try {
-      const response = await fetch(`/api/detail/${postId}`);
+      const response = await fetch(
+        `${SERVER_PATH_LOCAL}/post/public/detail/${postId}`
+      );
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;
@@ -30,7 +33,7 @@ function PostDetail() {
           message
         )}&cause=${encodeURIComponent(cause)}`;
       }
-      setPost(data);
+      setPost(data["data"]);
     } catch (error) {
       console.error("Error fetching post details:", error);
     }

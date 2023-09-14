@@ -40,7 +40,7 @@ const Info: React.FC<PostContentProps> = ({ post }) => {
             </button>
           </div>
           <div className="flex flex-row">
-            <div className="italic text-sm text-stone-700 mr-2" suppressHydrationWarning>Last update: {post.createdDate.toLocaleString()},</div>
+            <div className="italic text-sm text-stone-700 mr-2" suppressHydrationWarning>Last update: {post.createdAt},</div>
             <div className="italic text-sm text-stone-700 mr-2">{post.length} mins to read</div>
           </div>
         </div>

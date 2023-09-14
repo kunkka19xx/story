@@ -7,33 +7,6 @@ interface CarouselProps {
   captions: string[];
 }
 const TopPost: React.FC<CarouselProps> = ({ images, captions }) => {
-  //   const customNextArrow = (
-  //     clickHandler: () => void,
-  //     hasNext: boolean,
-  //     label: string
-  //   ) => (
-  //     <button
-  //       type="button"
-  //       onClick={clickHandler}
-  //       className="absolute top-1/2 -translate-y-1/2 right-0 px-4 py-2 bg-black bg-opacity-50 text-white rounded-l-lg focus:outline-none"
-  //     >
-  //       Next
-  //     </button>
-  //   );
-
-  //   const customPrevArrow = (
-  //     clickHandler: () => void,
-  //     hasPrev: boolean,
-  //     label: string
-  //   ) => (
-  //     <button
-  //       type="button"
-  //       onClick={clickHandler}
-  //       className="absolute top-1/2 -translate-y-1/2 left-0 px-4 py-2 bg-black bg-opacity-50 text-white rounded-r-lg focus:outline-none"
-  //     >
-  //       Previous
-  //     </button>
-  //   );
 
   return (
     <div className="w-full lg:w-11/12 self-center mt-5">

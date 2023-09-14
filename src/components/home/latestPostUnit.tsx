@@ -1,13 +1,12 @@
 import React from "react";
 import CategoryIcon from "./categoryIcon";
-import { PostContent } from "@/model/PostModel";
-import { setContentByLen } from "@/utils/util";
+import { MiniPost } from "@/model/MiniPostModel";
 
 interface PostProps {
-  post: PostContent;
+  post: MiniPost;
   idx: number;
 }
-const LastestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
+const LatestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
   return (
     <>
       <div
@@ -20,7 +19,11 @@ const LastestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
         <div className="mb-6 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-6/12 lg:pr-6">
           <div className="ripple relative overflow-hidden rounded-lg bg-cover bg-[50%] bg-no-repeat shadow-lg">
             <img
-              src="https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
+              src={
+                post.image
+                  ? post.image.slice(post.image.lastIndexOf("/assets"))
+                  : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
+              }
               className="w-full"
               alt=""
             />
@@ -40,16 +43,14 @@ const LastestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
             <CategoryIcon categories={post.categories}></CategoryIcon>
           </div>
           <p className="mb-6 text-sm text-neutral-700">
-            Published <u>{post.createdDate}</u> by&nbsp;
+            Published <u>{post.createdAt}</u> by&nbsp;
             <a href="#!">{post.author}</a>
           </p>
-          <p className="mb-6 text-neutral-700">
-            {setContentByLen(post.content, 80)}
-          </p>
+          <p className="mb-6 text-neutral-700">{post.miniContent.concat("...")}</p>
         </div>
       </div>
     </>
   );
 };
 
-export default LastestPostUnit;
+export default LatestPostUnit;

@@ -1,6 +1,7 @@
 import { Content } from "@/model/PostModel";
 
 export const setContentByLen = (content: Content[], len: number) => {
+
   if (!content || content.length === 0) return "";
   var finalContent = "";
   for (let i = 0; i < content.length; i++) {

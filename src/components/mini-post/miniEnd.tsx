@@ -22,7 +22,7 @@ const MiniEnd: React.FC<PostProps> = ({ post }) => {
         <div className="absolute inset-x-0 bottom-0 flex flex-row mt-1 text-smw">
           <p className="mr-1" suppressHydrationWarning>
             Created at:{" "}
-            {post.createdDate.toLocaleString()}
+            {post.createdAt.toLocaleString()}
             ,
           </p>
           <p className="mr-1">{post.length} minutes to read.</p>
