@@ -5,10 +5,6 @@ import React, { useState } from "react";
 import { PostContent, defaultPost } from "@/model/PostModel";
 import { CATEGORIES } from "@/constants/categoryConstant";
 
-// interface PostProps {
-//   post: PostContent;
-// }
-
 function CreatePost() {
   const [title, setTitle] = useState("");
   const [contentList, setContentList] = useState<
@@ -42,7 +38,7 @@ function CreatePost() {
       };
       setPost(newP);
     } else {
-      setPost({ ...post, content: body, tags: tags });
+      setPost({ ...post, content: body, tags: tags, categories: categories });
     }
   };
 
@@ -67,56 +63,61 @@ function CreatePost() {
       };
       setPost(newP);
     } else {
-      setPost({ ...post, content: body, tags: tags });
+      setPost({ ...post, content: body, tags: tags, categories: categories });
     }
   };
 
   const handleImgChange = (
     id: number,
-    image: React.ChangeEvent<HTMLInputElement>
+    img: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const file = image.target.files && image.target.files[0];
+    const file = img.target.files && img.target.files[0];
     if (file) {
+
       const fileContent = URL.createObjectURL(file);
       const reader = new FileReader();
-      if (id === 1) {
-        setImgList((prevImgList) =>
-          prevImgList.map((item) =>
-            item.id === 1
-              ? { ...item, image: fileContent }
-              : { ...item, image: fileContent }
-          )
-        );
+      // setBody((prevBody) =>
+      //   prevBody.map((item) =>
+      //     item.id === id ? { ...item, image: fileContent } : item
+      //   )
+      // );
+      // setImgList((prevImgList) =>
+      //   prevImgList.map(
+      //     (item) => (item.id === id ? { ...item, image: fileContent } : item)
+      //     // { ...item, image: fileContent }
+      //   )
+      // );
 
-        setBody((prevBody) =>
-          prevBody.map((item) =>
-            item.id === id ? { ...item, image: fileContent } : item
-          )
-        );
-      } else {
-        setImgList((prevImgList) =>
-          prevImgList.map((item) =>
-            item.id === id ? { ...item, image: fileContent } : item
-          )
-        );
-        setBody((prevBody) =>
-          prevBody.map((item) =>
-            item.id === id ? { ...item, image: fileContent } : item
-          )
-        );
-      }
+      const updatedBody = body.map((item) =>
+        item.id === id ? { ...item, image: fileContent } : item
+      );
+      const updatedImgList = imgList.map((item) =>
+        item.id === id ? { ...item, image: fileContent } : item
+      );
+      setBody(updatedBody);
+      setImgList(updatedImgList);
+
       reader.readAsDataURL(file);
       if (!post) {
         const newP = {
           ...defaultPost,
           id: 1000,
           title: title,
-          content: body,
+          content: updatedBody,
         };
         setPost(newP);
       } else {
-        setPost({ ...post, content: body, tags: tags });
+        console.log(post);
+        setPost({
+          ...post,
+          content: updatedBody,
+          tags: tags,
+          categories: categories,
+        });
       }
+
+      console.log("body" + body[0]["image"]);
+      console.log("img" + imgList[0]["image"]);
     }
   };
 
@@ -133,10 +134,11 @@ function CreatePost() {
         id: 1000,
         title: title,
         content: body,
+        categories: categories,
       };
       setPost(newP);
     } else {
-      setPost({ ...post, categories: categories });
+      setPost({ ...post, content: body, tags: tags, categories: categories });
     }
   };
 
@@ -148,6 +150,7 @@ function CreatePost() {
         id: 1000,
         title: title,
         content: body,
+        tags: tags,
       };
       setPost(newP);
     } else {
@@ -155,12 +158,27 @@ function CreatePost() {
     }
   };
 
-  const handleAddImage = () => {};
+  // const handleAddImage = () => {};
 
-  const hanldeTitleChange = () => {
-    if (!title) return;
-    setTitle(title);
+  const hanldeTitleChange = (target: string) => {
+    const newTitle = target;
+    // if (!newTitle) return;
+    setTitle(newTitle);
+    if (!post) {
+      const newP = {
+        ...defaultPost,
+        id: 1000,
+        title: newTitle, // Use the updated title
+        content: body,
+        tags: tags,
+        categories: categories,
+      };
+      setPost(newP);
+    } else {
+      setPost({ ...post, title: newTitle, content: body, tags: tags, categories: categories });
+    }
   };
+  
 
   // handle post
   // call post api
@@ -197,7 +215,7 @@ function CreatePost() {
             <div className="flex flex-col">
               <label className="mb-1 ml-1 font-semibold">Title:</label>
               <input
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => hanldeTitleChange(e.target.value)}
                 value={title}
                 placeholder="Write your post's title!"
                 className="ml-3 mr-3 mb-3 border rounded-md h-10"
@@ -256,7 +274,7 @@ function CreatePost() {
                     <div className="w-full ">
                       <input
                         id="id-input-image"
-                        onClick={handleAddImage}
+                        // onClick={handleAddImage}
                         value={item.image || undefined}
                         onChange={(e) => handleImgChange(item.id, e)}
                         className=" float-right bg-zinc-200 mr-3 text-sm  w-1/2 mb-1 rounded  hover:bg-purple-300 hover:italic hover:text-black"

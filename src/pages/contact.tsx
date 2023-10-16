@@ -11,7 +11,7 @@ function Contact() {
     ],
     phoneNumber: "+81 (709)-(9026)-(5396)",
     email: "nobita079x@gmail.com",
-    address: "Okinawa - Naha - Sobe",
+    address: "4-chōme-1-40 , Minato City, Tokyo 105-0001, Japan",
     workingHours: "Monday to Friday: 9 AM - 5 PM",
   };
   return (
@@ -64,7 +64,7 @@ function Contact() {
             <div className="block border-stone-300 border my-2 mx-2 shrink-0 grow-0 basis-auto">
               <div className="h-[400px] w-full">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7477988419855!2d139.74285797642224!3d35.65858483121661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bbd9009ec09%3A0x481a93f0d2a409dd!2sTokyo%20Tower!5e0!3m2!1sen!2sus!4v1692022241532!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1620.7357478701815!2d139.74338418893748!3d35.6653907222722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b90fcdf31cf%3A0xedfb29ae1b2e14ac!2s4-ch%C5%8Dme-1%20Toranomon%2C%20Minato%20City%2C%20Tokyo%20105-0001%2C%20Japan!5e0!3m2!1sen!2sus!4v1694835886554!5m2!1sen!2sus"
                   className="left-0 top-0 h-full w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg"
                   allowFullScreen
                 ></iframe>
