@@ -21,6 +21,7 @@ function Login({}) {
       email,
       password,
     });
+
     // setToken(token);
   };
 
@@ -63,7 +64,7 @@ function Login({}) {
 
           {/* right */}
           <div className="w-full md:w-1/2 min-h-full items-center">
-            <h1 className="mt-6 text-center font-semibold">
+            <h1 className="mt-10 text-center font-semibold">
               Login to Noah's world!
             </h1>
             <form

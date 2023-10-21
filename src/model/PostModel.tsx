@@ -13,7 +13,7 @@ export interface PostContent {
 export interface Content {
   id: number;
   content: string;
-  image: string;
+  image: File | null;
 }
 
 export interface Author {

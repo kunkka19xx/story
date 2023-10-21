@@ -12,7 +12,6 @@ function ListPost() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
   const router = useRouter();
   const tag = router.query.param;
-  console.log(tag);
   useEffect(() => {
     if (tag) {
       fetchPostByTag();

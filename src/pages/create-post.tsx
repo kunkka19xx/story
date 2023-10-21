@@ -4,16 +4,17 @@ import Header from "@/components/header";
 import React, { useState } from "react";
 import { PostContent, defaultPost } from "@/model/PostModel";
 import { CATEGORIES } from "@/constants/categoryConstant";
+import { SERVER_PATH_LOCAL } from "@/constants/server";
 
 function CreatePost() {
   const [title, setTitle] = useState("");
   const [contentList, setContentList] = useState<
-    { id: number; content: string; image: string }[]
-  >([{ id: 1, content: "", image: "" }]);
+    { id: number; content: string; image: File | null }[]
+  >([{ id: 1, content: "", image: null }]);
 
   const [body, setBody] = useState<
-    { id: number; content: string; image: string }[]
-  >([{ id: 1, content: "", image: "" }]);
+    { id: number; content: string; image: File | null }[]
+  >([{ id: 1, content: "", image: null }]);
 
   const [imgList, setImgList] = useState<{ id: number; image: string }[]>([
     { id: 1, image: "" },
@@ -26,9 +27,9 @@ function CreatePost() {
 
   const handleAddContent = () => {
     const newId = contentList.length + 1;
-    setContentList([...contentList, { id: newId, content: "", image: "" }]);
+    setContentList([...contentList, { id: newId, content: "", image: null }]);
     setImgList([...imgList, { id: newId, image: "" }]);
-    setBody([...body, { id: newId, content: "", image: "" }]);
+    setBody([...body, { id: newId, content: "", image: null }]);
     if (!post) {
       const newP = {
         ...defaultPost,
@@ -73,23 +74,11 @@ function CreatePost() {
   ) => {
     const file = img.target.files && img.target.files[0];
     if (file) {
-
       const fileContent = URL.createObjectURL(file);
       const reader = new FileReader();
-      // setBody((prevBody) =>
-      //   prevBody.map((item) =>
-      //     item.id === id ? { ...item, image: fileContent } : item
-      //   )
-      // );
-      // setImgList((prevImgList) =>
-      //   prevImgList.map(
-      //     (item) => (item.id === id ? { ...item, image: fileContent } : item)
-      //     // { ...item, image: fileContent }
-      //   )
-      // );
 
       const updatedBody = body.map((item) =>
-        item.id === id ? { ...item, image: fileContent } : item
+        item.id === id ? { ...item, image: file } : item
       );
       const updatedImgList = imgList.map((item) =>
         item.id === id ? { ...item, image: fileContent } : item
@@ -107,7 +96,6 @@ function CreatePost() {
         };
         setPost(newP);
       } else {
-        console.log(post);
         setPost({
           ...post,
           content: updatedBody,
@@ -158,8 +146,6 @@ function CreatePost() {
     }
   };
 
-  // const handleAddImage = () => {};
-
   const hanldeTitleChange = (target: string) => {
     const newTitle = target;
     // if (!newTitle) return;
@@ -175,22 +161,68 @@ function CreatePost() {
       };
       setPost(newP);
     } else {
-      setPost({ ...post, title: newTitle, content: body, tags: tags, categories: categories });
+      setPost({
+        ...post,
+        title: newTitle,
+        content: body,
+        tags: tags,
+        categories: categories,
+      });
     }
   };
-  
 
   // handle post
   // call post api
-  const handlePost = async () => {
-    const response = await fetch("api/post", {
+  const handlePost = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const formData = new FormData();
+    if (post) {
+      formData.append("title", post.title);
+      if (post.tags) {
+        post.tags.forEach((tag, index) => {
+          formData.append(`tags[${index}]`, tag);
+        });
+      }
+      if (post.categories) {
+        post.categories.forEach((category, index) => {
+          formData.append(`categories[${index}]`, category);
+        });
+      }
+      post.content.forEach((content, index) => {
+        if (content.image) {
+          formData.append(`content[${index}].file`, content.image);
+        }
+      });
+      post.content.forEach((content, index) => {
+        if (content.image) {
+          formData.append(`content[${index}].content`, content.content);
+        }
+      });
+    }
+
+    const token = sessionStorage.getItem("token");
+
+    const response = await fetch(`${SERVER_PATH_LOCAL}/post/make-post`, {
       method: METHOD_POST,
-      body: JSON.stringify({ post }),
+      body: formData,
       headers: {
-        "Content-Type": APPLICATION_JSON,
+        // "Content-Type": "multipart/form-data",
+        'Authorization': `Bearer ${token}`, // Add the token to the Authorization header
       },
-    });
-    const data = await response.json();
+    })
+      .then((response) => {
+        if (response.ok) {
+          // handle result or redirect
+        } else {
+          // handle exception
+          console.log("ERROR");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // const data = await response.json();
+    console.log(response);
   };
 
   return (
@@ -275,7 +307,7 @@ function CreatePost() {
                       <input
                         id="id-input-image"
                         // onClick={handleAddImage}
-                        value={item.image || undefined}
+                        // value={item.image}
                         onChange={(e) => handleImgChange(item.id, e)}
                         className=" float-right bg-zinc-200 mr-3 text-sm  w-1/2 mb-1 rounded  hover:bg-purple-300 hover:italic hover:text-black"
                         type="file"
@@ -330,6 +362,7 @@ function CreatePost() {
                     <img
                       className="ml-2 mr-2 mb-2 mt-2 rounded-lg border"
                       src={imgList[item.id - 1]["image"]}
+                      // src={item.image ? URL.createObjectURL(item.image) : ""}
                       alt=""
                     />
                   </li>
