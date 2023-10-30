@@ -12,7 +12,7 @@ const Content: React.FC<ContentProps> = ({ content }) => {
   return (
     <div>
     {content && content.map((item) => (
-    <div key={item.id}>
+    <div key={item.id} className="mb-4">
       <div dangerouslySetInnerHTML={{ __html: item.content.replace(/\n/g, "<br>") }}></div>
       <img src={`${item.image.slice(item.image.lastIndexOf("/assets"))}`}></img>
     </div>
