@@ -2,31 +2,31 @@ import { Content, PostContent } from "@/model/PostModel";
 import React, { useEffect, useState } from "react";
 
 interface ContentProps {
-  content: PostContent['content'] ;
+  miniContent: PostContent['miniContent'] ;
 }
 
-const MiniContent: React.FC<ContentProps> = ({content})=> {
+const MiniContent: React.FC<ContentProps> = ({miniContent})=> {
   
-  const truncateContent = (text: string, length: number) => {
-    const words = text.split(" ");
-    const truncatedText = words.slice(0, length).join(" ");
-    return truncatedText +  "...";
-  };
+  // const truncateContent = (text: string, length: number) => {
+  //   const words = text.split(" ");
+  //   const truncatedText = words.slice(0, length).join(" ");
+  //   return truncatedText +  "...";
+  // };
 
-  const setContent = (content : Content[]) => {
-    if (!content || content.length ===  0) return ""; 
-    var finalContent = ""
-    for(let i = 0; i< content.length; i++){
-      if(finalContent.length > 50) return truncateContent(finalContent, 50);
-      finalContent = finalContent.concat(content[i].content);
-    }
-    return truncateContent(finalContent, 50);
-  }
+  // const setContent = (content : Content[]) => {
+  //   if (!content || content.length ===  0) return ""; 
+  //   var finalContent = ""
+  //   for(let i = 0; i< content.length; i++){
+  //     if(finalContent.length > 50) return truncateContent(finalContent, 50);
+  //     finalContent = finalContent.concat(content[i].content);
+  //   }
+  //   return truncateContent(finalContent, 50);
+  // }
 
   return (
     <div>
       <div className="mr-3">
-        <p className="lg:text-base text-xs font-light">{setContent(content)}</p>
+        <p className="lg:text-base text-xs font-light">{miniContent}...</p>
       </div>
     </div>
   );

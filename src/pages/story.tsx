@@ -6,17 +6,25 @@ import Paging from "@/components/paging";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
 import { PostContent } from "@/model/PostModel";
+import { SERVER_PATH_LOCAL } from "@/constants/server";
+import router from "next/router";
+
 
 function Story() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
-
   useEffect(() => {
-    fetchPostByCategory("story");
+    handlePageChange(1);
   }, []);
 
-  async function fetchPostByCategory(name: string) {
+  const handlePageChange = (page:number) => {
+    fetchPostByCategory("story", page-1, 10);
+  };
+
+  async function fetchPostByCategory(name: string, page: number, size: number) {
     try {
-      const response = await fetch(`/api/posts/category/${name}`);
+      const response = await fetch(
+        `${SERVER_PATH_LOCAL}/post/public/find?category=${name}&page=${page}&size=${size}`
+      );
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;
@@ -25,7 +33,12 @@ function Story() {
           message
         )}&cause=${encodeURIComponent(cause)}`;
       }
-      setMiniPostData(data);
+      if (data && data["data"]["content"].length>0) {
+        setMiniPostData(data["data"]["content"]);
+      } else {
+        alert("No data.\nBack to previous page...");
+        router.back();
+      }
     } catch (error) {
       console.error("Error fetching post details:", error);
     }
@@ -38,27 +51,26 @@ function Story() {
       <div className="z-50 pb-14">
         <Header></Header>
       </div>
-      <div className="flex flex-row flex-grow">
+      <div className="flex flex-row">
         <div className="lg:w-1/6"></div>
         <div className="text-center lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
           <h3 className="text-yellow-900 font-light uppercase text-xl mb-2 mt-2">
             Thank for watching my story.
           </h3>
         </div>
-
         <div className="lg:w-1/3  hidden lg:block"></div>
       </div>
       <div className="flex flex-row flex-grow">
         <div className="lg:w-1/6 border-r border-gray-400"></div>
         {/* <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2"> */}
         <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
-          <div>
+          <div className="flex-grow">
             {miniPostData.map((_, index) => (
               <MiniPost key={index} post={miniPostData[index]} />
             ))}
           </div>
           <div className="mt-2 mb-2">
-            <Paging></Paging>
+            <Paging onPageChange={handlePageChange} pageType="story"></Paging>
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 import { PostContent } from "@/model/PostModel";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 
 interface TagProps {
   tags: PostContent["tags"];
@@ -8,12 +7,11 @@ interface TagProps {
 
 const TagGroup: React.FC<TagProps> = ({ tags }) => {
   const router = useRouter();
-  const tag = router.query.param;
+  // const tag = router.query.param;
 
-
-  const handleClickTag = (tagValue:string) => {
+  const handleClickTag = (tagValue: string) => {
     if (!tagValue) return;
-    router.push("/posts/".concat(tagValue));
+    router.push("/posts/".concat(`tag=${tagValue}`));
   };
 
   return (

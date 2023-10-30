@@ -8,12 +8,13 @@ export interface PostContent {
   tags:string[];
   categories:string[];
   miniContent: string;
+  image: string;
 }
 
 export interface Content {
   id: number;
   content: string;
-  image: File | null;
+  image: File | string | null;
 }
 
 export interface Author {
@@ -26,6 +27,7 @@ export const defaultPost: PostContent = {
   title: '',
   content: [],
   author: '',
+  image: '',
   miniContent: '',
   createdAt: '',
   length: 0,

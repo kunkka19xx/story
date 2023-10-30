@@ -9,9 +9,9 @@ function Post() {
 
   return (
     <section>
-      <div>
+      {/* <div>
         <Info post={post}></Info>
-      </div>
+      </div> */}
       <hr />
       <div>
         <Content content={post.content}></Content>

@@ -4,24 +4,28 @@ import MiniPost from "@/components/mini-post/miniPost";
 import Paging from "@/components/paging";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
+import { SERVER_PATH_LOCAL } from "@/constants/server";
 import { PostContent } from "@/model/PostModel";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 function ListPost() {
-  const [miniPostData, setMiniPostData] = useState<PostContent[]>();
+  // const [miniPostData, setMiniPostData] = useState<PostContent[]>();
   const router = useRouter();
-  const tag = router.query.param;
+  const parameter = router.query.param;
+  const [posts, setPosts] = useState<PostContent[]>();
   useEffect(() => {
-    if (tag) {
-      fetchPostByTag();
+    if (parameter) {
+      fetchPostsWithFilter(parameter.toString());
     }
     // else setMiniPostData(LIST_POST);
-  }, [tag]);
+  }, [parameter]);
 
-  async function fetchPostByTag() {
+  async function fetchPostsWithFilter(parameter: string) {
     try {
-      const response = await fetch(`/api/posts/${tag}`);
+      const response = await fetch(
+        `${SERVER_PATH_LOCAL}/post/public/find?${parameter}`
+      );
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;
@@ -30,13 +34,13 @@ function ListPost() {
           message
         )}&cause=${encodeURIComponent(cause)}`;
       }
-      setMiniPostData(data);
+      setPosts(data["data"]["content"]);
     } catch (error) {
       console.error("Error fetching post details:", error);
     }
   }
 
-  if (!miniPostData) return null;
+  if (!posts) return null;
 
   return (
     <section className="min-h-screen flex flex-col ">
@@ -47,12 +51,12 @@ function ListPost() {
         <div className="lg:w-1/6"></div>
         <div className="text-center lg:w-1/2 pl-2 pr-2 pb-2 flex flex-col">
           <h3 className="text-yellow-900 font-semibold uppercase text-xl mb-2 mt-2">
-            #TAG:{" "}
+            {parameter?.toString().split("=")[0].trim()}:{" "}
             <a
               className="text-sky-600 hover:text-rose-700 hover:italic"
-              href={"/posts/".concat(tag ? tag.toString() : "")}
+              href={"/posts/".concat(parameter ? parameter.toString() : "")}
             >
-              {tag}
+              {parameter?.toString().split("=")[1]}
             </a>
           </h3>
         </div>
@@ -64,12 +68,16 @@ function ListPost() {
         {/* <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2"> */}
         <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
           <div className="flex-grow">
-            {miniPostData.map((_, index) => (
-              <MiniPost key={index} post={miniPostData[index]} />
+            {posts.map((_, index) => (
+              <MiniPost key={index} post={posts[index]} />
             ))}
           </div>
           <div className="mt-2">
-            <Paging></Paging>
+            <Paging
+              pageType={
+                parameter ? parameter.toString().split("=")[0].trim() : ""
+              }
+            ></Paging>
           </div>
         </div>
 
@@ -95,7 +103,7 @@ function ListPost() {
             <div id="may-you-like-tag" className="flex">
               <div className="w-1/6"></div>
               <div className="w-3/4">
-                <TagGroup tags={["fake", "dummy"]}></TagGroup>
+                <TagGroup tags={["java", "tech", "story", "tag"]}></TagGroup>
               </div>
             </div>
           </div>

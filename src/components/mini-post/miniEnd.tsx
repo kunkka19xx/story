@@ -12,7 +12,7 @@ const MiniEnd: React.FC<PostProps> = ({ post }) => {
 
   const handleClickTag = (tag: string) => {
     if (!tag) return;
-    router.push("/posts/".concat(tag));
+    router.push("/posts/".concat(`tag=${tag}`));
   };
 
   return (

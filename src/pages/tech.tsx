@@ -4,6 +4,7 @@ import MiniPost from "@/components/mini-post/miniPost";
 import Paging from "@/components/paging";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
+import { SERVER_PATH_LOCAL } from "@/constants/server";
 import { PostContent } from "@/model/PostModel";
 import React, { useEffect, useState } from "react";
 
@@ -11,12 +12,19 @@ function Tech() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
 
   useEffect(() => {
-    fetchPostByCategory("tech");
+    // fetchPostByCategory("tech");
+    handlePageChange(1);
   }, []);
 
-  async function fetchPostByCategory(name: string) {
+  const handlePageChange = (page: number) => {
+    fetchPostByCategory("tech", page - 1, 10);
+  };
+
+  async function fetchPostByCategory(name: string, page: number, size: number) {
     try {
-      const response = await fetch(`/api/posts/category/${name}`);
+      const response = await fetch(
+        `${SERVER_PATH_LOCAL}/post/public/find?category=${name}&page=${page}&size=${size}`
+      );
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;
@@ -25,7 +33,7 @@ function Tech() {
           message
         )}&cause=${encodeURIComponent(cause)}`;
       }
-      setMiniPostData(data);
+      setMiniPostData(data["data"]["content"]);
     } catch (error) {
       console.error("Error fetching post details:", error);
     }
@@ -38,7 +46,7 @@ function Tech() {
       <div className="z-50 pb-14">
         <Header></Header>
       </div>
-      <div className="flex flex-row flex-grow">
+      <div className="flex flex-row">
         <div className="lg:w-1/6"></div>
         <div className="text-center lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
           <h3 className="text-yellow-900 font-light uppercase text-xl mb-2 mt-2">
@@ -52,13 +60,13 @@ function Tech() {
         <div className="lg:w-1/6 border-r border-gray-400"></div>
         {/* <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2"> */}
         <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
-          <div>
+          <div className="flex-grow">
             {miniPostData.map((_, index) => (
               <MiniPost key={index} post={miniPostData[index]} />
             ))}
           </div>
           <div className="mt-2 mb-2">
-            <Paging></Paging>
+            <Paging onPageChange={handlePageChange} pageType="story"></Paging>
           </div>
         </div>
 
@@ -83,9 +91,7 @@ function Tech() {
             <div id="may-you-like-tag" className="flex">
               <div className="w-1/6"></div>
               <div className="w-3/4">
-                <TagGroup
-                  tags={["fake", "dummy", "dog", "log tag", "tag"]}
-                ></TagGroup>
+                <TagGroup tags={["java", "tech", "story", "tag"]}></TagGroup>
               </div>
             </div>
           </div>
