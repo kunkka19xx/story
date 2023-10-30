@@ -14,17 +14,35 @@ function ListPost() {
   const router = useRouter();
   const parameter = router.query.param;
   const [posts, setPosts] = useState<PostContent[]>();
+  // useEffect(() => {
+  //   if (parameter) {
+  //     fetchPostsWithFilter(parameter.toString());
+  //   }
+  //   // else setMiniPostData(LIST_POST);
+  // }, [parameter]);
+
   useEffect(() => {
-    if (parameter) {
-      fetchPostsWithFilter(parameter.toString());
-    }
-    // else setMiniPostData(LIST_POST);
+    // fetchPostByCategory("tech");
+    handlePageChange(1);
   }, [parameter]);
 
-  async function fetchPostsWithFilter(parameter: string) {
+  const handlePageChange = (page: number) => {
+    if (parameter) {
+      console.log(parameter.toString())
+      console.log(page)
+
+      fetchPostsWithFilter(parameter.toString(), page - 1, 10);
+    }
+  };
+
+  async function fetchPostsWithFilter(
+    parameter: string,
+    page: number,
+    size: number
+  ) {
     try {
       const response = await fetch(
-        `${SERVER_PATH_LOCAL}/post/public/find?${parameter}`
+        `${SERVER_PATH_LOCAL}/post/public/find?${parameter}&page=${page}&size=${size}`
       );
       const data = await response.json();
       if (response.status !== 200) {
@@ -74,6 +92,7 @@ function ListPost() {
           </div>
           <div className="mt-2">
             <Paging
+              onPageChange={handlePageChange}
               pageType={
                 parameter ? parameter.toString().split("=")[0].trim() : ""
               }

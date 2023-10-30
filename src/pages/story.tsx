@@ -9,15 +9,14 @@ import { PostContent } from "@/model/PostModel";
 import { SERVER_PATH_LOCAL } from "@/constants/server";
 import router from "next/router";
 
-
 function Story() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
   useEffect(() => {
     handlePageChange(1);
   }, []);
 
-  const handlePageChange = (page:number) => {
-    fetchPostByCategory("story", page-1, 10);
+  const handlePageChange = (page: number) => {
+    fetchPostByCategory("story", page - 1, 10);
   };
 
   async function fetchPostByCategory(name: string, page: number, size: number) {
@@ -33,7 +32,7 @@ function Story() {
           message
         )}&cause=${encodeURIComponent(cause)}`;
       }
-      if (data && data["data"]["content"].length>0) {
+      if (data && data["data"]["content"].length > 0) {
         setMiniPostData(data["data"]["content"]);
       } else {
         alert("No data.\nBack to previous page...");
@@ -95,9 +94,7 @@ function Story() {
             <div id="may-you-like-tag" className="flex">
               <div className="w-1/6"></div>
               <div className="w-3/4">
-                <TagGroup
-                  tags={["fake", "dummy", "dog", "log tag", "tag"]}
-                ></TagGroup>
+                <TagGroup tags={["java", "tech", "story", "tag"]}></TagGroup>
               </div>
             </div>
           </div>
