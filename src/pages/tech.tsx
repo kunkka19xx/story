@@ -11,13 +11,27 @@ import React, { useEffect, useState } from "react";
 function Tech() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
 
+  // useEffect(() => {
+  //   // fetchPostByCategory("tech");
+  //   handlePageChange(1);
+  // }, []);
+
+  // const handlePageChange = (page: number) => {
+  //   fetchPostByCategory("tech", page - 1, 2);
+  // };
   useEffect(() => {
-    // fetchPostByCategory("tech");
-    handlePageChange(1);
+    // Thử lấy dữ liệu từ localStorage nếu có
+    const storedData = localStorage.getItem("techData");
+    if (storedData) {
+      setMiniPostData(JSON.parse(storedData));
+    } else {
+      // Nếu không có dữ liệu trong localStorage, thì tải lại dữ liệu
+      handlePageChange(1);
+    }
   }, []);
 
-  const handlePageChange = (page: number) => {
-    fetchPostByCategory("tech", page - 1, 10);
+  const handlePageChange = async (page: number) => {
+    fetchPostByCategory("tech", page - 1, 2);
   };
 
   async function fetchPostByCategory(name: string, page: number, size: number) {
@@ -34,6 +48,7 @@ function Tech() {
         )}&cause=${encodeURIComponent(cause)}`;
       }
       setMiniPostData(data["data"]["content"]);
+      localStorage.setItem("techData", JSON.stringify(data["data"]["content"]));
     } catch (error) {
       console.error("Error fetching post details:", error);
     }
