@@ -39,10 +39,10 @@ function Story() {
         )}&cause=${encodeURIComponent(cause)}`;
       }
         setMiniPostData(data["data"]["content"]);
-        localStorage.setItem(
-          "storyData",
-          JSON.stringify(data["data"]["content"])
-        );
+        // localStorage.setItem(
+        //   "storyData",
+        //   JSON.stringify(data["data"]["content"])
+        // );
     } catch (error) {
       console.error("Error fetching post details:", error);
     }

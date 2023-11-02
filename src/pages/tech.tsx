@@ -6,29 +6,27 @@ import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
 import { SERVER_PATH_LOCAL } from "@/constants/server";
 import { PostContent } from "@/model/PostModel";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 function Tech() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
-
-  useEffect(() => {
-    const storedData = localStorage.getItem("techData");
-    if (storedData && storedData.length > 2) {
-      setMiniPostData(JSON.parse(storedData));
-    } else {
-      handlePageChange(1);
-    }
-  }, []);
+  const router = useRouter();
+  const asPath = router.asPath;
+  console.log(asPath);
+  const page  = router.query.page as string;
+  const pageNumber = typeof page === "string" ? parseInt(page, 10) : 1;
 
   const handlePageChange = async (page: number) => {
     if (page <= 0) return;
-    fetchPostByCategory("tech", page - 1, 10);
+    await router.push(`/tech?page=${page}`);
+    // fetchPostByCategory("tech", pageNumber - 1, 10);
   };
 
-  async function fetchPostByCategory(name: string, page: number, size: number) {
+  async function fetchPostData(page: number) {
     try {
-      const params = new URLSearchParams();
-      const url = `${SERVER_PATH_LOCAL}/post/public/find?category=${name}&page=${page}&size=${size}`;
+      // const params = new URLSearchParams();
+      const url = `${SERVER_PATH_LOCAL}/post/public/find?category=tech&page=${page-1}&size=10`;
       const response = await fetch(url);
       const data = await response.json();
       if (response.status !== 200) {
@@ -39,11 +37,15 @@ function Tech() {
         )}&cause=${encodeURIComponent(cause)}`;
       }
       setMiniPostData(data["data"]["content"]);
-      localStorage.setItem("techData", JSON.stringify(data["data"]["content"]));
     } catch (error) {
       console.error("Error fetching post details:", error);
     }
   }
+
+  useEffect(() => {
+    fetchPostData(pageNumber);
+  }, [pageNumber]);
+
 
   if (!miniPostData) return null;
 
