@@ -14,23 +14,20 @@ function ListPost() {
   const router = useRouter();
   const parameter = router.query.param;
   const [posts, setPosts] = useState<PostContent[]>();
-  // useEffect(() => {
-  //   if (parameter) {
-  //     fetchPostsWithFilter(parameter.toString());
-  //   }
-  //   // else setMiniPostData(LIST_POST);
-  // }, [parameter]);
 
   useEffect(() => {
-    // fetchPostByCategory("tech");
-    handlePageChange(1);
+    const storedData = parameter
+      ? localStorage.getItem(parameter.toString())
+      : "";
+    if (storedData && storedData.length > 2) {
+      setPosts(JSON.parse(storedData));
+    } else {
+      handlePageChange(1);
+    }
   }, [parameter]);
 
   const handlePageChange = (page: number) => {
     if (parameter) {
-      console.log(parameter.toString())
-      console.log(page)
-
       fetchPostsWithFilter(parameter.toString(), page - 1, 10);
     }
   };
@@ -53,6 +50,7 @@ function ListPost() {
         )}&cause=${encodeURIComponent(cause)}`;
       }
       setPosts(data["data"]["content"]);
+      localStorage.setItem(parameter, JSON.stringify(data["data"]["content"]));
     } catch (error) {
       console.error("Error fetching post details:", error);
     }

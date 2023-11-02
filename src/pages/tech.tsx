@@ -11,34 +11,25 @@ import React, { useEffect, useState } from "react";
 function Tech() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
 
-  // useEffect(() => {
-  //   // fetchPostByCategory("tech");
-  //   handlePageChange(1);
-  // }, []);
-
-  // const handlePageChange = (page: number) => {
-  //   fetchPostByCategory("tech", page - 1, 2);
-  // };
   useEffect(() => {
-    // Thử lấy dữ liệu từ localStorage nếu có
     const storedData = localStorage.getItem("techData");
-    if (storedData) {
+    if (storedData && storedData.length > 2) {
       setMiniPostData(JSON.parse(storedData));
     } else {
-      // Nếu không có dữ liệu trong localStorage, thì tải lại dữ liệu
       handlePageChange(1);
     }
   }, []);
 
   const handlePageChange = async (page: number) => {
-    fetchPostByCategory("tech", page - 1, 2);
+    if (page <= 0) return;
+    fetchPostByCategory("tech", page - 1, 10);
   };
 
   async function fetchPostByCategory(name: string, page: number, size: number) {
     try {
-      const response = await fetch(
-        `${SERVER_PATH_LOCAL}/post/public/find?category=${name}&page=${page}&size=${size}`
-      );
+      const params = new URLSearchParams();
+      const url = `${SERVER_PATH_LOCAL}/post/public/find?category=${name}&page=${page}&size=${size}`;
+      const response = await fetch(url);
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;

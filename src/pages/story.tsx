@@ -12,10 +12,16 @@ import router from "next/router";
 function Story() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
   useEffect(() => {
-    handlePageChange(1);
+    const storedData = localStorage.getItem("storyData");
+    if (storedData && storedData.length>2) {
+      setMiniPostData(JSON.parse(storedData));
+    } else {
+      handlePageChange(1);
+    }
   }, []);
 
   const handlePageChange = (page: number) => {
+    if(page<=0) return;
     fetchPostByCategory("story", page - 1, 10);
   };
 
@@ -32,12 +38,11 @@ function Story() {
           message
         )}&cause=${encodeURIComponent(cause)}`;
       }
-      if (data && data["data"]["content"].length > 0) {
         setMiniPostData(data["data"]["content"]);
-      } else {
-        alert("No data.\nBack to previous page...");
-        router.back();
-      }
+        localStorage.setItem(
+          "storyData",
+          JSON.stringify(data["data"]["content"])
+        );
     } catch (error) {
       console.error("Error fetching post details:", error);
     }

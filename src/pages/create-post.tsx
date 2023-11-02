@@ -5,8 +5,10 @@ import React, { useState } from "react";
 import { PostContent, defaultPost } from "@/model/PostModel";
 import { CATEGORIES } from "@/constants/categoryConstant";
 import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { useRouter } from "next/router";
 
 function CreatePost() {
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [contentList, setContentList] = useState<
     { id: number; content: string; image: File | null }[]
@@ -49,22 +51,26 @@ function CreatePost() {
         item.id === id ? { ...item, content: value } : item
       )
     );
-
-    setBody((prevBody) =>
-      prevBody.map((item) =>
-        item.id === id ? { ...item, content: value } : item
-      )
+    const updatedBody = body.map((item) =>
+      item.id === id ? { ...item, content: value } : item
     );
+    setBody(updatedBody);
+
     if (!post) {
       const newP = {
         ...defaultPost,
         id: 1000,
         title: title,
-        content: body,
+        content: updatedBody,
       };
       setPost(newP);
     } else {
-      setPost({ ...post, content: body, tags: tags, categories: categories });
+      setPost({
+        ...post,
+        content: updatedBody,
+        tags: tags,
+        categories: categories,
+      });
     }
   };
 
@@ -103,15 +109,14 @@ function CreatePost() {
           categories: categories,
         });
       }
-
-      console.log("body" + body[0]["image"]);
-      console.log("img" + imgList[0]["image"]);
     }
   };
 
   const handleCheckboxChange = (value: string) => {
+    // const newCategories = [];
     if (categories.includes(value)) {
-      setCategories(categories.filter((item) => item !== value));
+      const newCategories = categories.filter((item) => item !== value);
+      setCategories(newCategories);
     } else {
       setCategories([...categories, value]);
     }
@@ -131,18 +136,25 @@ function CreatePost() {
   };
 
   const handleTagChange = (target: string) => {
-    setTags(target.split(","));
+    const newTags = target.split(",");
+    setTags(newTags);
     if (!post) {
       const newP = {
         ...defaultPost,
         id: 1000,
         title: title,
         content: body,
-        tags: tags,
+        tags: newTags,
+        categories: categories,
       };
       setPost(newP);
     } else {
-      setPost({ ...post, content: body, tags: tags });
+      setPost({
+        ...post,
+        content: body,
+        tags: newTags,
+        categories: categories,
+      });
     }
   };
 
@@ -194,7 +206,7 @@ function CreatePost() {
         }
       });
       post.content.forEach((content, index) => {
-        if (content.image) {
+        if (content.content) {
           formData.append(`content[${index}].content`, content.content);
         }
       });
@@ -207,22 +219,26 @@ function CreatePost() {
       body: formData,
       headers: {
         // "Content-Type": "multipart/form-data",
-        'Authorization': `Bearer ${token}`, // Add the token to the Authorization header
+        Authorization: `Bearer ${token}`, // Add the token to the Authorization header
       },
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.ok) {
           // handle result or redirect
+          const data = (response.formData.toString());
+          // if (data["data"])
+          const responseData = await response.json();
+          console.log(responseData)
+
+          const createdPostId = responseData['data'].id;
+          // Redirect to the detail page of the newly created post using the retrieved ID
+          router.push(`/detail/${createdPostId}`);
         } else {
           // handle exception
-          console.log("ERROR");
         }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
     // const data = await response.json();
-    console.log(response);
   };
 
   return (

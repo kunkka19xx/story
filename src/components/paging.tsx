@@ -24,12 +24,14 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
   };
 
   const handlePageClickPrev = () => {
-    if (x[0] === 1) return;
-    const updatedX = x.map((value) => value - 1);
-    setX(updatedX);
+    if (x[0] === 1 && focus == 1) return;
+    if (x[0] > 1) {
+      const updatedX = x.map((value) => value - 1);
+      setX(updatedX);
+    }
     const val = focus - 1;
     setFocus(val);
-    console.log(updatedX);
+    // console.log(updatedX);
     if (onPageChange) {
       onPageChange(val);
     }
@@ -46,11 +48,6 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
     }
   };
 
-  const handleClickGeneral = () => {
-    if (pageType.toLocaleLowerCase() === "story") {
-    }
-  };
-
   return (
     <section>
       <nav aria-label="Page navigation example">
@@ -63,34 +60,23 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
               Previous
             </a>
           </li>
-          <li>
-            <a
-              // className={`relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-neutral-700 dark:hover:text-gray-500 ${x === 1 ? 'active' : ''}`}
-              className={`relative block rounded-full bg-primary-100 px-3 py-1.5 text-sm font-medium text-primary-700 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-neutral-700 dark:hover:text-gray-500`}
-              href="#"
-              onClick={() => handlePageClick(0)}
-            >
-              {x[0]}
-            </a>
-          </li>
-          <li>
-            <a
-              className={`relative block rounded-full bg-primary-100 px-3 py-1.5 text-sm font-medium text-primary-700 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-neutral-700 dark:hover:text-gray-500`}
-              href="#"
-              onClick={() => handlePageClick(1)}
-            >
-              {x[1]}
-            </a>
-          </li>
-          <li>
-            <a
-              className={`relative block rounded-full bg-primary-100 px-3 py-1.5 text-sm font-medium text-primary-700 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-neutral-700 dark:hover:text-gray-500`}
-              href="#"
-              onClick={() => handlePageClick(2)}
-            >
-              {x[2]}
-            </a>
-          </li>
+
+          {x.map((page, index) => (
+            <li key={index}>
+              <a
+                className={`relative block rounded-full px-3 py-1.5 text-sm font-medium transition-all duration-300 ${
+                  focus === page
+                    ? "bg-primary-100 text-primary-700 hover:bg-neutral-100 text-rose-950 font-semibold border border-gray-400 bg-indigo-200 dark:hover:bg-neutral-700 dark:hover:text-gray-500"
+                    : "bg-primary-100 text-primary-700 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-neutral-700 dark:hover:text-gray-500"
+                }`}
+                href="#"
+                onClick={() => handlePageClick(index)}
+              >
+                {page}
+              </a>
+            </li>
+          ))}
+
           <li>
             <a
               className="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-neutral-700 dark:hover:text-gray-500"
