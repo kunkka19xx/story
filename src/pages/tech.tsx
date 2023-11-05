@@ -12,8 +12,6 @@ import React, { useEffect, useState } from "react";
 function Tech() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
   const router = useRouter();
-  const asPath = router.asPath;
-  console.log(asPath);
   const page  = router.query.page as string;
   const pageNumber = typeof page === "string" ? parseInt(page, 10) : 1;
 

@@ -11,7 +11,7 @@ const TagGroup: React.FC<TagProps> = ({ tags }) => {
 
   const handleClickTag = (tagValue: string) => {
     if (!tagValue) return;
-    router.push("/posts/".concat(`tag=${tagValue}`));
+    router.push("/posts/".concat(`tag=${tagValue}&page=1`));
   };
 
   return (

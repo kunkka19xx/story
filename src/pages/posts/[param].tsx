@@ -10,51 +10,53 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 function ListPost() {
-  // const [miniPostData, setMiniPostData] = useState<PostContent[]>();
   const router = useRouter();
-  const parameter = router.query.param;
+  const parameter = router.query.param as string;
+
+  const [pageNumber, setPageNumber] = useState(1); // State to hold the page number
+  // const [tag, setTag] = useState(""); // State to hold the page number
+  // if (parameter) setTag(parameter.split("&")[0].split("=")[1]);
+
+  const category = router.query.category as string;
+
   const [posts, setPosts] = useState<PostContent[]>();
 
-  useEffect(() => {
-    const storedData = parameter
-      ? localStorage.getItem(parameter.toString())
-      : "";
-    if (storedData && storedData.length > 2) {
-      setPosts(JSON.parse(storedData));
-    } else {
-      handlePageChange(1);
-    }
-  }, [parameter]);
+  var tag = "";
+  if (parameter) tag = parameter.split("&")[0].split("=")[1];
 
-  const handlePageChange = (page: number) => {
-    if (parameter) {
-      fetchPostsWithFilter(parameter.toString(), page - 1, 10);
-    }
+  const handlePageChange = async (page: number) => {
+    if (page <= 0) return;
+    setPageNumber(page);
+    await router.push(`/posts/tag=${tag}&page=${page}`);
   };
 
-  async function fetchPostsWithFilter(
-    parameter: string,
-    page: number,
-    size: number
-  ) {
+  async function fetchPostsWithFilter(page: number) {
     try {
-      const response = await fetch(
-        `${SERVER_PATH_LOCAL}/post/public/find?${parameter}&page=${page}&size=${size}`
-      );
-      const data = await response.json();
-      if (response.status !== 200) {
-        const message = data.message;
-        const cause = data.cause;
-        window.location.href = `/error?message=${encodeURIComponent(
-          message
-        )}&cause=${encodeURIComponent(cause)}`;
+      var url = "";
+      if (tag != "") {
+        url = `${SERVER_PATH_LOCAL}/post/public/find?tag=${tag}&page=${
+          page - 1
+        }&size=10`;
+        console.log(tag);
+        const response = await fetch(url);
+        const data = await response.json();
+        if (response.status !== 200) {
+          const message = data.message;
+          const cause = data.cause;
+          window.location.href = `/error?message=${encodeURIComponent(
+            message
+          )}&cause=${encodeURIComponent(cause)}`;
+        }
+        setPosts(data["data"]["content"]);
       }
-      setPosts(data["data"]["content"]);
-      localStorage.setItem(parameter, JSON.stringify(data["data"]["content"]));
     } catch (error) {
       console.error("Error fetching post details:", error);
     }
   }
+
+  useEffect(() => {
+    fetchPostsWithFilter(pageNumber);
+  }, [parameter]);
 
   if (!posts) return null;
 

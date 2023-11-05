@@ -13,7 +13,6 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
   const [focus, setFocus] = useState(1);
 
   useEffect(() => {
-    console.log(focus);
   }, [focus]);
 
   const handlePageClick = (index: number) => {
@@ -42,7 +41,6 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
     setX(updatedX);
     const val = focus + 1;
     setFocus(val);
-    console.log(updatedX);
     if (onPageChange) {
       onPageChange(val);
     }

@@ -15,7 +15,7 @@ function Contact() {
     workingHours: "Monday to Friday: 9 AM - 5 PM",
   };
   return (
-    <section className="">
+    <section className="min-h-screen flex flex-col">
       <div className="z-0 pb-16">
         <Header></Header>
       </div>
@@ -120,7 +120,7 @@ function Contact() {
               ></textarea>
             </div>
 
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-4 flex-grow">
               <button
                 className="w-full items-center border from-sky-600 to-sky-200 bg-gradient-to-r opacity-80
               hover:bg-gradient-to-r hover:from-indigo-400 hover:opacity-75 hover:text-lg hover:text-slate-800
@@ -133,7 +133,7 @@ function Contact() {
         </div>
       </div>
 
-      <div className="mt-14">
+      <div className="mt-auto">
         <Footer></Footer>
       </div>
     </section>
