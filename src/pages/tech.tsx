@@ -18,12 +18,10 @@ function Tech() {
   const handlePageChange = async (page: number) => {
     if (page <= 0) return;
     await router.push(`/tech?page=${page}`);
-    // fetchPostByCategory("tech", pageNumber - 1, 10);
   };
 
   async function fetchPostData(page: number) {
     try {
-      // const params = new URLSearchParams();
       const url = `${SERVER_PATH_LOCAL}/post/public/find?category=tech&page=${page-1}&size=10`;
       const response = await fetch(url);
       const data = await response.json();
@@ -64,7 +62,6 @@ function Tech() {
       </div>
       <div className="flex flex-row flex-grow">
         <div className="lg:w-1/6 border-r border-gray-400"></div>
-        {/* <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2"> */}
         <div className="lg:w-1/2 pl-2 pr-2 pt-2 pb-2 flex flex-col">
           <div className="flex-grow">
             {miniPostData.map((_, index) => (
@@ -72,7 +69,7 @@ function Tech() {
             ))}
           </div>
           <div className="mt-2 mb-2">
-            <Paging onPageChange={handlePageChange} pageType="story"></Paging>
+            <Paging onPageChange={handlePageChange} pageType={pageNumber}></Paging>
           </div>
         </div>
 

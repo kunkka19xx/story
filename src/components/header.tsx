@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function Header() {
+  const pageVal = 1;
   const [show, setShow] = useState(false);
   const handleClickToggle = () => {
     if (show) {
@@ -62,10 +63,16 @@ function Header() {
               {/* <a href="/top" className="px-6 hover:text-red-400 hover:italic">
                 Top Post
               </a> */}
-              <a href="/tech" className="px-6 hover:text-red-400 hover:italic">
+              <a
+                href={`/tech?page=${pageVal}`}
+                className="px-6 hover:text-red-400 hover:italic"
+              >
                 Tech
               </a>
-              <a href="/story" className="px-6 hover:text-red-400 hover:italic">
+              <a
+                href={`/story?page=${pageVal}`}
+                className="px-6 hover:text-red-400 hover:italic"
+              >
                 Story
               </a>
               <a
@@ -145,7 +152,7 @@ function Header() {
               </a> */}
             <div className="h-10 hover:bg-gradient-to-r hover:from-amber-300">
               <a
-                href="/tech"
+                href={`/tech?page=${pageVal}`}
                 className="mb-2 ml-6 hover:text-red-400 hover:italic"
               >
                 Tech
@@ -153,7 +160,7 @@ function Header() {
             </div>
             <div className="h-10 hover:bg-gradient-to-r hover:from-amber-300">
               <a
-                href="/story"
+                href={`/story?page=${pageVal}`}
                 className="mb-2 ml-6 hover:text-red-400 hover:italic"
               >
                 Story

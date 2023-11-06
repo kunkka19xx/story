@@ -1,48 +1,56 @@
-import { SERVER_PATH_LOCAL } from "@/constants/server";
-import router from "next/router";
 import React, { useEffect, useState } from "react";
 
 interface PageType {
-  pageType: string;
+  pageType: number;
   onPageChange?: (page: number) => void;
 }
 
 // function Paging() {
 const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
   const [x, setX] = useState([1, 2, 3]);
-  const [focus, setFocus] = useState(1);
+  // const [focus, setFocus] = useState(1);
 
   useEffect(() => {
-  }, [focus]);
+    console.log(pageType)
+    console.log(x)
+  }, [x]);
 
   const handlePageClick = (index: number) => {
-    setFocus(x[index]);
+    // setFocus(x[index]);
+    pageType = x[index];
     if (onPageChange) {
       onPageChange(x[index]);
     }
   };
 
   const handlePageClickPrev = () => {
-    if (x[0] === 1 && focus == 1) return;
-    if (x[0] > 1) {
+    if (x[0] === 1 && pageType == 1) return;
+    pageType--;
+    debugger
+    if (x[0] > 1 && !x.includes(pageType)) {
       const updatedX = x.map((value) => value - 1);
       setX(updatedX);
     }
-    const val = focus - 1;
-    setFocus(val);
+    // const val = focus - 1;
+    // setFocus(val);
     // console.log(updatedX);
     if (onPageChange) {
-      onPageChange(val);
+      onPageChange(pageType);
     }
   };
 
   const handlePageClickNext = () => {
-    const updatedX = x.map((value) => value + 1);
-    setX(updatedX);
-    const val = focus + 1;
-    setFocus(val);
+    pageType++;
+    if (!x.includes(pageType)) {
+      const updatedX = x.map((value) => value + 1);
+      setX(updatedX);
+    }
+
+    // const val = focus + 1;
+    // setFocus(val);
+
     if (onPageChange) {
-      onPageChange(val);
+      onPageChange(pageType);
     }
   };
 
@@ -63,11 +71,11 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
             <li key={index}>
               <a
                 className={`relative block rounded-full px-3 py-1.5 text-sm font-medium transition-all duration-300 ${
-                  focus === page
+                  pageType === page
                     ? "bg-primary-100 text-primary-700 hover:bg-neutral-100 text-rose-950 font-semibold border border-gray-400 bg-indigo-200 dark:hover:bg-neutral-700 dark:hover:text-gray-500"
                     : "bg-primary-100 text-primary-700 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-neutral-700 dark:hover:text-gray-500"
                 }`}
-                href="#"
+                href=""
                 onClick={() => handlePageClick(index)}
               >
                 {page}
@@ -78,7 +86,7 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
           <li>
             <a
               className="relative block rounded-full bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-neutral-700 dark:hover:text-gray-500"
-              href="#"
+              href=""
               onClick={() => handlePageClickNext()}
             >
               Next

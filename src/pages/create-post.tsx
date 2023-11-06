@@ -228,7 +228,6 @@ function CreatePost() {
           const data = (response.formData.toString());
           // if (data["data"])
           const responseData = await response.json();
-          console.log(responseData)
 
           const createdPostId = responseData['data'].id;
           // Redirect to the detail page of the newly created post using the retrieved ID

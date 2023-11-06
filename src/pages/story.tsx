@@ -7,29 +7,25 @@ import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
 import { PostContent } from "@/model/PostModel";
 import { SERVER_PATH_LOCAL } from "@/constants/server";
-import router from "next/router";
+import router, { useRouter } from "next/router";
 
 function Story() {
   const [miniPostData, setMiniPostData] = useState<PostContent[]>();
-  useEffect(() => {
-    const storedData = localStorage.getItem("storyData");
-    if (storedData && storedData.length>2) {
-      setMiniPostData(JSON.parse(storedData));
-    } else {
-      handlePageChange(1);
-    }
-  }, []);
+  const router = useRouter();
+  const page = router.query.page as string;
+  const pageNumber = typeof page === "string" ? parseInt(page, 10) : 1;
 
-  const handlePageChange = (page: number) => {
-    if(page<=0) return;
-    fetchPostByCategory("story", page - 1, 10);
+  const handlePageChange = async (page: number) => {
+    if (page <= 0) return;
+    await router.push(`/story?page=${page}`);
   };
 
-  async function fetchPostByCategory(name: string, page: number, size: number) {
+  async function fetchPostData(page: number) {
     try {
-      const response = await fetch(
-        `${SERVER_PATH_LOCAL}/post/public/find?category=${name}&page=${page}&size=${size}`
-      );
+      const url = `${SERVER_PATH_LOCAL}/post/public/find?category=story&page=${
+        page - 1
+      }&size=10`;
+      const response = await fetch(url);
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;
@@ -38,15 +34,15 @@ function Story() {
           message
         )}&cause=${encodeURIComponent(cause)}`;
       }
-        setMiniPostData(data["data"]["content"]);
-        // localStorage.setItem(
-        //   "storyData",
-        //   JSON.stringify(data["data"]["content"])
-        // );
+      setMiniPostData(data["data"]["content"]);
     } catch (error) {
       console.error("Error fetching post details:", error);
     }
   }
+
+  useEffect(() => {
+    fetchPostData(pageNumber);
+  }, [pageNumber]);
 
   if (!miniPostData) return null;
 
@@ -74,7 +70,10 @@ function Story() {
             ))}
           </div>
           <div className="mt-2 mb-2">
-            <Paging onPageChange={handlePageChange} pageType="story"></Paging>
+            <Paging
+              onPageChange={handlePageChange}
+              pageType={pageNumber}
+            ></Paging>
           </div>
         </div>
 

@@ -9,24 +9,19 @@ import { PostContent } from "@/model/PostModel";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-function ListPost() {
+const ListPost: React.FC = () => {
   const router = useRouter();
   const parameter = router.query.param as string;
 
-  const [pageNumber, setPageNumber] = useState(1); // State to hold the page number
-  // const [tag, setTag] = useState(""); // State to hold the page number
-  // if (parameter) setTag(parameter.split("&")[0].split("=")[1]);
-
-  const category = router.query.category as string;
-
   const [posts, setPosts] = useState<PostContent[]>();
-
-  var tag = "";
-  if (parameter) tag = parameter.split("&")[0].split("=")[1];
-
+  var tag = router.query.category as string;
+  var pageVal = 1;
+  if (parameter) {
+    pageVal = Number.parseInt(parameter.split("&")[1].split("=")[1]);
+    tag = parameter.split("&")[0].split("=")[1];
+  }
   const handlePageChange = async (page: number) => {
     if (page <= 0) return;
-    setPageNumber(page);
     await router.push(`/posts/tag=${tag}&page=${page}`);
   };
 
@@ -37,7 +32,6 @@ function ListPost() {
         url = `${SERVER_PATH_LOCAL}/post/public/find?tag=${tag}&page=${
           page - 1
         }&size=10`;
-        console.log(tag);
         const response = await fetch(url);
         const data = await response.json();
         if (response.status !== 200) {
@@ -55,7 +49,7 @@ function ListPost() {
   }
 
   useEffect(() => {
-    fetchPostsWithFilter(pageNumber);
+    fetchPostsWithFilter(pageVal);
   }, [parameter]);
 
   if (!posts) return null;
@@ -74,7 +68,7 @@ function ListPost() {
               className="text-sky-600 hover:text-rose-700 hover:italic"
               href={"/posts/".concat(parameter ? parameter.toString() : "")}
             >
-              {parameter?.toString().split("=")[1]}
+              {parameter?.toString().split("=")[1].split("&")[0]}
             </a>
           </h3>
         </div>
@@ -131,6 +125,6 @@ function ListPost() {
       <Footer></Footer>
     </section>
   );
-}
+};
 
 export default ListPost;
