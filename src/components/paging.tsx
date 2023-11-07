@@ -10,10 +10,7 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
   const [x, setX] = useState([1, 2, 3]);
   // const [focus, setFocus] = useState(1);
 
-  useEffect(() => {
-    console.log(pageType)
-    console.log(x)
-  }, [x]);
+  useEffect(() => {}, [x]);
 
   const handlePageClick = (index: number) => {
     // setFocus(x[index]);
@@ -26,7 +23,6 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
   const handlePageClickPrev = () => {
     if (x[0] === 1 && pageType == 1) return;
     pageType--;
-    debugger
     if (x[0] > 1 && !x.includes(pageType)) {
       const updatedX = x.map((value) => value - 1);
       setX(updatedX);
@@ -41,6 +37,9 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
 
   const handlePageClickNext = () => {
     pageType++;
+    if (onPageChange) {
+      onPageChange(pageType);
+    }
     if (!x.includes(pageType)) {
       const updatedX = x.map((value) => value + 1);
       setX(updatedX);
@@ -48,10 +47,6 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
 
     // const val = focus + 1;
     // setFocus(val);
-
-    if (onPageChange) {
-      onPageChange(pageType);
-    }
   };
 
   return (

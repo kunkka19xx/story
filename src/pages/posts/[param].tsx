@@ -12,9 +12,9 @@ import React, { useEffect, useState } from "react";
 const ListPost: React.FC = () => {
   const router = useRouter();
   const parameter = router.query.param as string;
-
+  const [pageType, setPageType] = useState(1);
   const [posts, setPosts] = useState<PostContent[]>();
-  var tag = router.query.category as string;
+  var tag = ""
   var pageVal = 1;
   if (parameter) {
     pageVal = Number.parseInt(parameter.split("&")[1].split("=")[1]);
@@ -23,6 +23,7 @@ const ListPost: React.FC = () => {
   const handlePageChange = async (page: number) => {
     if (page <= 0) return;
     await router.push(`/posts/tag=${tag}&page=${page}`);
+    setPageType(page);
   };
 
   async function fetchPostsWithFilter(page: number) {
@@ -49,8 +50,11 @@ const ListPost: React.FC = () => {
   }
 
   useEffect(() => {
-    fetchPostsWithFilter(pageVal);
-  }, [parameter]);
+    const pageChanged = pageVal !== pageType;
+    if (pageChanged || pageVal ===1 ) {
+      fetchPostsWithFilter(pageVal);
+    }
+  }, [pageVal, tag]);
 
   if (!posts) return null;
 
@@ -88,7 +92,8 @@ const ListPost: React.FC = () => {
             <Paging
               onPageChange={handlePageChange}
               pageType={
-                parameter ? parameter.toString().split("=")[0].trim() : ""
+                pageVal
+                // parameter ? parameter.toString().split("=")[0].trim() : ""
               }
             ></Paging>
           </div>
