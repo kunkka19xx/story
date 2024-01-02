@@ -8,8 +8,8 @@ function AboutMe() {
     "/assets/avatar/i_avatar.jpg",
   ];
   const paragraph = [
-    "Năm 2018, Tôi đặt chân qua nhật với hành trang là tấm bằng khá đại học Bách Khoa Hà Nội và trình độ tiếng Nhật tốt hơn N3 1 chút. Tôi vốn tốt nghiệp ngành cơ khí - cơ điện tử BKHN, năm đó - 2012 tôi thi đại học theo phong trào, thấy bạn đăng ký gì thì mình đăng ký theo mà không hề tìm hiểu xem mình thích gì. Thật ra ý định của tôi là thi học viện ngân hàng. Vì tôi nghe nói học nhàn, sau này đi làm cũng nhàn. Nhưng không được mẹ tôi chấp nhận :D vì nhân lực ngành ngân hàng khi đó đang dần bão hoà, và cũng không hợp với 1 đứa con trai, lại xuất thân từ gia đình bần nông. Sau khi qua Nhật, ngày ngày làm việc như 1 cái máy, tôi không tìm thấy niềm vui trong công việc của mình. (Đã có lúc tôi còn có ý định làm youtube - quả là ngây thơ và fomo). Cộng hưởng thêm việc các đồng nghiệp người Việt của tôi khá an phận, không có mục tiêu rõ ràng ngoài việc tăng ca nhiều để kiếm tiền… Tôi thấy mông lung và stress. Rồi tôi đã dành thời gian suy nghĩ xem con đường tiếp theo của mình sẽ như thế nào.",
-    "Tôi rà soát lại điểm mạnh của mình từ khi còn đi học, và đó chỉ là toán… Hồi đại học tôi cũng được học 1 số môn lập trình như lập trình đại cương, tự động hoá, ghép nối các phần tử trong máy tính, lập trình nhúng, arduino… Tôi nhớ lại và thấy mình khá có tư duy trong các môn học đó rồi tôi lao đầu và bắt đầu học lại lập trình với 2 quyển sách về java và oracle database mua ở bookoff. Càng học, càng tìm hiểu nhiều tôi lại càng thấy thích và đã clone được game flappy bird của Nguyễn Hà Đông. Tôi đi phỏng vấn để có 1 công việc lập trình…nhưng thật khó ở Nhật nếu bạn không có kinh nghiệm (thời 2018, hiện tại tôi thấy khá là dễ dàng để có 1 vị trí fresher). Thực ra tôi cũng đã được 2,3 công ty trao offer nhưng vị trí chỉ là tester… Vì vậy tôi đánh bạo phỏng vấn job developer ở Việt Nam, quyết định quay lại Việt Nam để trau dồi kinh nghiệm và được cọ sát với đam mê thật nhiều. Khi đó visa của tôi còn hạn trên 3 năm nữa ( tổng 5 năm). Đó là 1 quyết định khó khăn khi tôi đã phải hạ thu nhập của mình xuống 5 lần, từ bỏ visa của 1 nước phát triển để quay về Việt Nam - bắt đầu 1 hành trình gian nan và rất chật vật…. (còn tiếp)",
+    "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart. -Helen Keller",
+    "If life were predictable it would cease to be life and be without flavor. -Eleanor Roosevelt",
   ];
   return (
     <div className="w-full flex-wrap lg:flex mb-14 lg:px-4 px-2">
@@ -67,7 +67,7 @@ function AboutMe() {
               />
               <div className="lg:h-120 h-auto lg:absolute bottom-8 p-8 rounded-lg">
                 <h5 className="text-left mb-2 lg:mb-10 text-xl font-medium leading-tight text-white">
-                  About me:{" "}
+                  Quotes:{" "}
                   <small className="text-zinc-300 italic"> 1.{index + 1}</small>
                 </h5>
                 <p className=" rounded-sm text-left mb-4 lg:text-base lg:font-normal font-thin text-xs text-white bg-none bg-opacity-100 lg:bg-black lg:bg-opacity-20">

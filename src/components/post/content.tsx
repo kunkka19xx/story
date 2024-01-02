@@ -20,7 +20,8 @@ const Content: React.FC<ContentProps> = ({ content }) => {
             {/* <img src={`${item.image.slice(item.image.lastIndexOf("/assets"))}`}></img> */}
 
             {typeof item.image === 'string' && (
-            <img className="sm:w-11/12 w-full mx-auto" src={`${item.image.slice(item.image.lastIndexOf("/assets"))}`} alt="Item Image" />
+            <img className="sm:w-11/12 w-full mx-auto rounded-md" src={`${item.image.slice(item.image.lastIndexOf("/assets"))}`} alt="Item Image" />
+
           )}
           </div>
         ))}
