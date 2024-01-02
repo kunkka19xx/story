@@ -8,12 +8,13 @@ interface PageType {
 // function Paging() {
 const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
   const [x, setX] = useState([1, 2, 3]);
-  // const [focus, setFocus] = useState(1);
 
-  useEffect(() => {}, [x]);
+  useEffect(() => {
+    const startPage = Math.max(1, pageType - 1);
+    setX([startPage, startPage + 1, startPage + 2]);
+  }, [pageType]);
 
   const handlePageClick = (index: number) => {
-    // setFocus(x[index]);
     pageType = x[index];
     if (onPageChange) {
       onPageChange(x[index]);
@@ -21,33 +22,17 @@ const Paging: React.FC<PageType> = ({ pageType, onPageChange }) => {
   };
 
   const handlePageClickPrev = () => {
-    if (x[0] === 1 && pageType == 1) return;
-    pageType--;
-    if (x[0] > 1 && !x.includes(pageType)) {
-      const updatedX = x.map((value) => value - 1);
-      setX(updatedX);
-    }
-    // const val = focus - 1;
-    // setFocus(val);
-    // console.log(updatedX);
-    if (onPageChange) {
-      onPageChange(pageType);
+    if (pageType > 1 && onPageChange) {
+      onPageChange(pageType - 1);
     }
   };
 
   const handlePageClickNext = () => {
-    pageType++;
     if (onPageChange) {
-      onPageChange(pageType);
+      onPageChange(pageType + 1);
     }
-    if (!x.includes(pageType)) {
-      const updatedX = x.map((value) => value + 1);
-      setX(updatedX);
-    }
-
-    // const val = focus + 1;
-    // setFocus(val);
   };
+
 
   return (
     <section>

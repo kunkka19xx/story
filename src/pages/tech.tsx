@@ -39,9 +39,9 @@ function Tech() {
   }
 
   useEffect(() => {
+    if (!router.isReady) return;
     fetchPostData(pageNumber);
-  }, [pageNumber]);
-
+  }, [router.isReady, pageNumber]);
 
   if (!miniPostData) return null;
 
