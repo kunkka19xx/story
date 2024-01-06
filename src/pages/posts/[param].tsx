@@ -17,7 +17,9 @@ const ListPost: React.FC = () => {
   var tag = ""
   var pageVal = 1;
   if (parameter) {
-    pageVal = Number.parseInt(parameter.split("&")[1].split("=")[1]);
+    if(parameter.split("&")[1]){
+      pageVal = Number.parseInt(parameter.split("&")[1].split("=")[1]);
+    }
     tag = parameter.split("&")[0].split("=")[1];
   }
   const handlePageChange = async (page: number) => {
