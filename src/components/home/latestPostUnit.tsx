@@ -21,8 +21,8 @@ const LatestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
             <img
               src={
                 post.image
-                  // ? post.image.slice(post.image.lastIndexOf("/assets"))
-                  // : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
+                // ? post.image.slice(post.image.lastIndexOf("/assets"))
+                // : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
               }
               className="w-full"
               alt=""
@@ -46,7 +46,12 @@ const LatestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
             Published <u>{post.createdAt}</u> by&nbsp;
             <a href="#!">{post.author}</a>
           </p>
-          <p className="mb-6 text-neutral-700">{post.miniContent.concat("...")}</p>
+          <div
+            className="mb-6 text-neutral-700"
+            dangerouslySetInnerHTML={{
+              __html: post.miniContent.concat("...").replace(/\n/g, "<br>"),
+            }}
+          ></div>
         </div>
       </div>
     </>

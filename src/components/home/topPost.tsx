@@ -71,9 +71,15 @@ const TopPost: React.FC<CarouselProps> = () => {
                   <h2 className="mb-2 font-semibold text-xl">
                     {posts[index]["title"]}
                   </h2>
-                  <p className="mb-6 text-sm text-center">
-                    {(posts[index]["miniContent"] as string).slice(0, 100)}...
-                  </p>
+                  <div
+                    className="mb-6 text-sm text-center"
+                    dangerouslySetInnerHTML={{
+                      __html: (posts[index]["miniContent"] as string)
+                        .slice(0, 50).concat("...")
+                        .replace(/\n/g, "<br>"),
+                    }}
+                  >
+                  </div>
                 </div>
               </a>
             </div>

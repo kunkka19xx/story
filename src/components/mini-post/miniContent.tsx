@@ -26,7 +26,9 @@ const MiniContent: React.FC<ContentProps> = ({miniContent})=> {
   return (
     <div>
       <div className="mr-3">
-        <p className="lg:text-base text-xs font-light">{miniContent}...</p>
+        <div className="lg:text-base text-xs font-light" dangerouslySetInnerHTML={{
+                __html: miniContent.concat("...").replace(/\n/g, "<br>"),
+              }} ></div>
       </div>
     </div>
   );
