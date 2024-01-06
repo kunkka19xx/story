@@ -6,7 +6,7 @@ import Paging from "@/components/paging";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
 import { PostContent } from "@/model/PostModel";
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 import router, { useRouter } from "next/router";
 
 function Story() {
@@ -22,7 +22,7 @@ function Story() {
 
   async function fetchPostData(page: number) {
     try {
-      const url = `${SERVER_PATH_LOCAL}/post/public/find?category=story&page=${
+      const url = `${SERVER_PATH}/post/public/find?category=story&page=${
         page - 1
       }&size=10`;
       const response = await fetch(url);

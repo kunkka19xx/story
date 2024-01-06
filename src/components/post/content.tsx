@@ -1,6 +1,6 @@
 import React from "react";
 import { PostContent } from "../../model/PostModel";
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 import { convertDriveLinkToDirectLink } from "@/utils/util";
 
 interface ContentProps {

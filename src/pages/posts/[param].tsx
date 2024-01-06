@@ -4,7 +4,7 @@ import MiniPost from "@/components/mini-post/miniPost";
 import Paging from "@/components/paging";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 import { PostContent } from "@/model/PostModel";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -30,7 +30,7 @@ const ListPost: React.FC = () => {
     try {
       var url = "";
       if (tag != "") {
-        url = `${SERVER_PATH_LOCAL}/post/public/find?tag=${tag}&page=${
+        url = `${SERVER_PATH}/post/public/find?tag=${tag}&page=${
           page - 1
         }&size=10`;
         const response = await fetch(url);

@@ -4,7 +4,7 @@ import Header from "@/components/header";
 import React, { useState } from "react";
 import { PostContent, defaultPost } from "@/model/PostModel";
 import { CATEGORIES } from "@/constants/categoryConstant";
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 import { useRouter } from "next/router";
 
 function CreatePost() {
@@ -214,7 +214,7 @@ function CreatePost() {
 
     const token = sessionStorage.getItem("token");
 
-    const response = await fetch(`${SERVER_PATH_LOCAL}/post/make-post`, {
+    const response = await fetch(`${SERVER_PATH}/post/make-post`, {
       method: METHOD_POST,
       body: formData,
       headers: {

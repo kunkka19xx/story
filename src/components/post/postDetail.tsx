@@ -7,7 +7,7 @@ import Footer from "../footer";
 import { useRouter } from "next/router";
 import { PostContent } from "@/model/PostModel";
 import TagGroup from "../right/tagGroup";
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 
 function PostDetail() {
   const [post, setPost] = useState<PostContent | null>(null);
@@ -23,7 +23,7 @@ function PostDetail() {
   async function fetchPostDetails() {
     try {
       const response = await fetch(
-        `${SERVER_PATH_LOCAL}/post/public/detail/${postId}`
+        `${SERVER_PATH}/post/public/detail/${postId}`
       );
       const data = await response.json();
       if (response.status !== 200) {

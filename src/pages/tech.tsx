@@ -4,7 +4,7 @@ import MiniPost from "@/components/mini-post/miniPost";
 import Paging from "@/components/paging";
 import OutStanding from "@/components/right/outStanding";
 import TagGroup from "@/components/right/tagGroup";
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 import { PostContent } from "@/model/PostModel";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -22,7 +22,7 @@ function Tech() {
 
   async function fetchPostData(page: number) {
     try {
-      const url = `${SERVER_PATH_LOCAL}/post/public/find?category=tech&page=${page-1}&size=10`;
+      const url = `${SERVER_PATH}/post/public/find?category=tech&page=${page-1}&size=10`;
       const response = await fetch(url);
       const data = await response.json();
       if (response.status !== 200) {

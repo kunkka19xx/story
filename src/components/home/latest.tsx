@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import LatestPostUnit from "./latestPostUnit";
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 
 const Latest = () => {
   // const listPost = LIST_POST.slice(0, 5);
@@ -12,7 +12,8 @@ const Latest = () => {
 
   async function fetchLatestPost() {
     try {
-      const response = await fetch(`${SERVER_PATH_LOCAL}/post/public/latest`);
+      const response = await fetch(`${SERVER_PATH}/post/public/latest`);
+      
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;

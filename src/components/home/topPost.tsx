@@ -1,4 +1,4 @@
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 import { PostContent } from "@/model/PostModel";
 import React, { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
@@ -16,7 +16,7 @@ const TopPost: React.FC<CarouselProps> = () => {
 
   async function fetchTopPost() {
     try {
-      const response = await fetch(`${SERVER_PATH_LOCAL}/post/public/top`);
+      const response = await fetch(`${SERVER_PATH}/post/public/top`);
       const data = await response.json();
       if (response.status !== 200) {
         const message = data.message;

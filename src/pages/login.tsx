@@ -1,7 +1,7 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { APPLICATION_JSON, METHOD_POST } from "@/constants/headerConstant";
-import { SERVER_PATH_LOCAL } from "@/constants/server";
+import { SERVER_PATH } from "@/constants/server";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -26,7 +26,7 @@ function Login({}) {
   };
 
   async function handleLogin(credentials: LoginBody) {
-    const response = await fetch(`${SERVER_PATH_LOCAL}/auth/login`, {
+    const response = await fetch(`${SERVER_PATH}/auth/login`, {
       method: METHOD_POST,
       body: JSON.stringify(credentials),
       headers: {
