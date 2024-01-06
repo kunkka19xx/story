@@ -52,15 +52,16 @@ const TopPost: React.FC<CarouselProps> = () => {
         >
           {posts.map((_, index) => (
             <div key={index} className="relative">
-              <a href={`detail/${posts[index]['id']}`}>
+              <a href={`detail/${posts[index]["id"]}`}>
                 <div className="w-full h-full">
                   <img
                     src={
                       posts[index]["image"]
-                        ? (posts[index]["image"] as string).slice(
-                          (posts[index]["image"] as string).lastIndexOf("/assets")
-                          )
-                        : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
+                        ? posts[index]["image"]
+                        : // as string).slice(
+                          //   (posts[index]["image"] as string).lastIndexOf("/assets")
+                          //   )
+                          "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
                     }
                     alt={`Slide ${index + 1}`}
                     className="w-full h-96 object-cover rounded-md"

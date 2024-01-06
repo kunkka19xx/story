@@ -3,6 +3,7 @@ import MiniContent from "./miniContent";
 import MiniEnd from "./miniEnd";
 import MiniTop from "./miniTop";
 import { PostContent } from "@/model/PostModel";
+import { convertDriveLinkToDirectLink } from "@/utils/util";
 
 interface PostProps {
   post: PostContent;
@@ -45,9 +46,11 @@ const MiniPost: React.FC<PostProps> = ({ post }) => {
               className="w-full h-full object-cover"
               // style={{ minHeight: "240px" }} // Set your desired fixed height here
               src={
+                // post.image
+                //   ? post.image.slice(post.image.lastIndexOf("/assets"))
+                //   : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
+                // convertDriveLinkToDirectLink(post.image)
                 post.image
-                  ? post.image.slice(post.image.lastIndexOf("/assets"))
-                  : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
               }
               alt="Post Image"
             />
