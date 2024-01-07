@@ -30,3 +30,21 @@ export function convertDriveLinkToDirectLink(driveLink: string) {
     return "";
   }
 }
+
+export function getTruncatedContent(
+  content: string,
+  maxChars: number,
+  maxLines: number
+) {
+  const splitContent = content.split("\n");
+  let truncatedContent = splitContent.slice(0, maxLines).join("\n");
+
+  if (truncatedContent.length > maxChars) {
+    truncatedContent = truncatedContent.slice(0, maxChars);
+  }
+
+  return truncatedContent;
+}
+
+export const MAX_CHARACTERS = 235;
+export const MAX_LINES = 4;
