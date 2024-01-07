@@ -25,8 +25,6 @@ const Content: React.FC<ContentProps> = ({ content }) => {
               <img
                 className="sm:w-11/12 w-full mx-auto rounded-md"
                 src={
-                  // `${item.image.slice(item.image.lastIndexOf("/assets"))}`
-                  // convertDriveLinkToDirectLink(item.image)
                   item.image
                 }
                 alt="Item Image"

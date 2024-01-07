@@ -7,24 +7,6 @@ interface ContentProps {
 }
 
 const MiniContent: React.FC<ContentProps> = ({ miniContent }) => {
-  // const truncateContent = (text: string, length: number) => {
-  //   const words = text.split(" ");
-  //   const truncatedText = words.slice(0, length).join(" ");
-  //   return truncatedText +  "...";
-  // };
-
-  // const setContent = (content : Content[]) => {
-  //   if (!content || content.length ===  0) return "";
-  //   var finalContent = ""
-  //   for(let i = 0; i< content.length; i++){
-  //     if(finalContent.length > 50) return truncateContent(finalContent, 50);
-  //     finalContent = finalContent.concat(content[i].content);
-  //   }
-  //   return truncateContent(finalContent, 50);
-  // }
-
-  
-
   const truncatedContent = getTruncatedContent(
     miniContent,
     MAX_CHARACTERS,

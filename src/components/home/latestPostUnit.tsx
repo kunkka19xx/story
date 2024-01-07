@@ -21,6 +21,8 @@ const LatestPostUnit: React.FC<PostProps> = ({ post, idx }) => {
             <img
               src={
                 post.image
+                  ? post.image
+                  : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
                 // ? post.image.slice(post.image.lastIndexOf("/assets"))
                 // : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
               }

@@ -30,7 +30,7 @@ const MiniPost: React.FC<PostProps> = ({ post }) => {
       <div className="flex flex-col lg:flex-row items-center">
         {/* <div className="w-full lg:w-1/6 border-r border-gray-500"></div> */}
         <div className="flex flex-col lg:flex-row w-full lg:w-full pl-2 pr-2 pt-2 mb-2">
-          <div className="w-full h-60 lg:w-3/4 flex flex-col">
+          <div className="w-full h-60 lg:w-3/4 flex flex-col mb-2 mt-4">
             <div className="">
               <MiniTop post={post} />
             </div>
@@ -46,11 +46,9 @@ const MiniPost: React.FC<PostProps> = ({ post }) => {
               className="w-full h-full object-cover"
               // style={{ minHeight: "240px" }} // Set your desired fixed height here
               src={
-                // post.image
-                //   ? post.image.slice(post.image.lastIndexOf("/assets"))
-                //   : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
-                // convertDriveLinkToDirectLink(post.image)
                 post.image
+                  ? post.image
+                  : "https://mdbcdn.b-cdn.net/img/new/standard/city/028.jpg"
               }
               alt="Post Image"
             />
